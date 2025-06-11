@@ -1,0 +1,54 @@
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.navbar-brand img {
+  max-height: 50px;
+  width: auto;
+}
+
+.product-detail-img {
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+}
+
+.price-display {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--bs-info);
+}
+
+.original-price-display {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.quantity-input {
+  width: 80px;
+}
+
+.product-description {
+  white-space: pre-wrap;
+}
+
+.footer {
+  background-color: #343a40;
+  color: #adb5bd;
+}
+
+.footer a {
+  color: var(--bs-info);
+}
+
+.footer a:hover {
+  color: #fff;
+}
