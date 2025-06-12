@@ -60,48 +60,6 @@ if (isset($_POST["login"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login_user.css?v=<?= time(); ?>">
-
-    <style>
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        #loading-overlay img {
-            max-width: 200px;
-            margin-bottom: 1rem;
-        }
-
-        #loading-overlay .loading-text {
-            font-weight: 500;
-            color: #333;
-            font-size: 1.1rem;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0.5;
-            }
-        }
-    </style>
 </head>
 
 <body class="login-layout">
@@ -151,7 +109,7 @@ if (isset($_POST["login"])) {
             loginForm.addEventListener('submit', function(e) {
                 // Tampilkan overlay loading setiap kali tombol submit ditekan
                 loadingOverlay.style.display = 'flex';
-                });
+            });
         }
     </script>
 </body>

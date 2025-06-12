@@ -11,7 +11,7 @@ $offset = ($halaman_aktif - 1) * $pesanan_per_halaman;
 
 $filter_status = isset($_GET['status']) ? $_GET['status'] : '';
 $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
-$sort_option = isset($_GET['sort_option']) ? $_GET['sort_option'] : 'id_asc'; // Default ke ID terlama
+$sort_option = isset($_GET['sort_option']) ? $_GET['sort_option'] : 'id_asc'; 
 
 // --- PERBAIKAN: LOGIKA UNTUK FILTER URUTKAN ---
 $sort_column = 'id_pesanan';
@@ -172,7 +172,7 @@ if ($stmt_data) {
                     $query_params = [];
                     if (!empty($search_query)) $query_params['search'] = $search_query;
                     if (!empty($filter_status)) $query_params['status'] = $filter_status;
-                    if ($sort_option != 'id_asc') $query_params['sort_option'] = $sort_option; // Bawa parameter jika bukan default
+                    if ($sort_option != 'id_asc') $query_params['sort_option'] = $sort_option; 
                     $base_url .= http_build_query($query_params);
                     $separator = empty($query_params) ? '' : '&';
                     ?>

@@ -2,7 +2,7 @@
 session_start();
 require_once '../functions.php'; 
 require_once '../proyek/lib/fpdf186/fpdf.php';
-protect_admin_page(); // halaman ini hanya untuk admin
+protect_admin_page(); 
 
 
 //PDF Reporting

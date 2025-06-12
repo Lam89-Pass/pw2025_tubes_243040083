@@ -66,74 +66,7 @@ if (isset($_SESSION['pesan_flash'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard.css?v=<?= time(); ?>">
-    <style>
-        .main-product-image {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            border-radius: 0.5rem;
-            border: 1px solid #dee2e6;
-        }
-
-        .thumbnail-images img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.2s ease;
-        }
-
-        .thumbnail-images img.active,
-        .thumbnail-images img:hover {
-            border-color: var(--bs-success);
-        }
-
-        .product-title-detail {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .price-display {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--bs-success);
-        }
-
-        .action-card {
-            border-radius: 0.75rem;
-            border: 1px solid #dee2e6;
-            position: sticky;
-            top: 100px;
-        }
-
-        .quantity-input {
-            width: 80px;
-        }
-
-        .nav-tabs .nav-link {
-            color: #6c757d;
-            font-weight: 500;
-            border: none;
-            border-bottom: 3px solid transparent;
-        }
-
-        .nav-tabs .nav-link.active {
-            color: var(--bs-success);
-            border-color: var(--bs-success);
-            background-color: transparent;
-        }
-
-        .tab-content-container {
-            background-color: #fff;
-            padding: 1.5rem;
-            border: 1px solid #dee2e6;
-            border-top: none;
-            border-radius: 0 0 0.5rem 0.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/detail_produk.css?v=<?= time(); ?>">
 </head>
 
 <body>

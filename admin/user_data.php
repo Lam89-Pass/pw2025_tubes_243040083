@@ -118,7 +118,7 @@ if (isset($conn) && $total_users > 0) {
                                 <td><?= htmlspecialchars($user_item['email']); ?></td>
                                 <td>
                                     <?php
-                                    $role_class = 'bg-secondary'; // Default untuk 'user'
+                                    $role_class = 'bg-secondary'; 
                                     if ($user_item['role'] == 'admin') $role_class = 'bg-success';
                                     if ($user_item['role'] == 'staff') $role_class = 'bg-info text-dark';
                                     ?>

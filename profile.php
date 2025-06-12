@@ -61,22 +61,6 @@ $alamat_lengkap_form = $user_profile['alamat_lengkap'] ?? '';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dashboard.css?v=<?= time(); ?>">
-    <style>
-        .profile-nav-card .list-group-item.active {
-            background-color: var(--bs-success);
-            border-color: var(--bs-success);
-            color: white;
-        }
-
-        .info-label {
-            font-weight: 500;
-            color: #6c757d;
-        }
-
-        .info-value {
-            font-weight: 500;
-        }
-    </style>
 </head>
 
 <body>

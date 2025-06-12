@@ -1,6 +1,4 @@
-<?php
-// File: partials/footer_user.php
-?>
+<link rel="stylesheet" href="css/dashboard.css">
 
 <div class="modal fade" id="notifikasiModal" tabindex="-1" aria-labelledby="notifikasiModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -32,26 +30,6 @@
         </div>
     </div>
 </div>
-
-
-<style>
-    .footer .social-icon {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .footer .social-icon:hover {
-        background-color: var(--bs-success) !important;
-        border-color: var(--bs-success) !important;
-        color: #fff !important;
-        transform: translateY(-2px);
-    }
-</style>
 
 <footer class="footer bg-dark text-white pt-5 pb-4">
     <div class="container text-center text-md-start">

@@ -151,52 +151,6 @@ if (isset($conn) && $conn && $total_produk > 0) {
                     </select>
                 </form>
             </div>
-
-                <div class="row g-4">
-                    <div class="col-lg-3">
-                        <div class="filter-sidebar">
-                            <div class="card shadow-sm">
-                                <div class="card-header">
-                                    <h5 class="mb-0"><i class="bi bi-funnel-fill me-2"></i>Filter Produk</h5>
-                                </div>
-                                <div class="card-body">
-                                    <form id="filter-form">
-                                        <h6 class="fw-bold mb-2">Kategori</h6>
-                                        <?php foreach ($all_categories as $cat): ?>
-                                            <div class="form-check">
-                                                <input class="form-check-input filter-checkbox" type="checkbox" name="kategori[]" value="<?= $cat['id_kategori'] ?>" id="cat-<?= $cat['id_kategori'] ?>">
-                                                <label class="form-check-label" for="cat-<?= $cat['id_kategori'] ?>"><?= htmlspecialchars($cat['nama_kategori']) ?></label>
-                                            </div>
-                                        <?php endforeach; ?>
-                                        <hr>
-                                        <h6 class="fw-bold mb-2">Merek</h6>
-                                        <?php foreach ($all_merek as $merek): ?>
-                                            <div class="form-check">
-                                                <input class="form-check-input filter-checkbox" type="checkbox" name="merek[]" value="<?= $merek['id_merek'] ?>" id="merek-<?= $merek['id_merek'] ?>">
-                                                <label class="form-check-label" for="merek-<?= $merek['id_merek'] ?>"><?= htmlspecialchars($merek['nama_merek']) ?></label>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-9">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="mb-0">Menampilkan Produk</h4>
-                            <select class="form-select" id="sort-option" style="width: auto;">
-                                <option value="terbaru">Terbaru</option>
-                                <option value="termurah">Harga: Termurah</option>
-                                <option value="termahal">Harga: Termahal</option>
-                            </select>
-                        </div>
-                        <div id="product-list-container" class="row g-3">
-                        </div>
-                    </div>
-                </div>
-            
-
             <div class="row g-3">
                 <?php if (!empty($produk_list)) : ?>
                     <?php foreach ($produk_list as $row) : ?>

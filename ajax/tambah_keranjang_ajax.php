@@ -17,7 +17,7 @@ if (isset($_SESSION['login'], $_SESSION['user_id']) && isset($_POST['id_produk']
             $response['success'] = true;
             $response['message'] = 'Produk berhasil ditambahkan ke keranjang!';
         } else {
-            $response['message'] = $result['message']; // Ambil pesan error dari fungsi
+            $response['message'] = $result['message']; 
         }
     } else {
         $response['message'] = 'Data produk tidak valid.';

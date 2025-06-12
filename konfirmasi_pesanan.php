@@ -74,7 +74,7 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                                     <p>Nomor/ID: <strong>085221560909</strong> a/n BengkelinAja</p>
                                 </div>
 
-                            <?php else: // Fallback untuk metode lain jika ada 
+                            <?php else: 
                             ?>
                                 <div class="alert alert-light mt-4">
                                     <p class="mb-0">Pesanan Anda akan segera kami proses. Terima kasih!</p>

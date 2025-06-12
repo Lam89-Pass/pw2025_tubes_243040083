@@ -23,41 +23,6 @@ $pesanan_list = get_pesanan_by_user_id($user_id);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/dashboard.css?v=<?= time(); ?>">
-    <style>
-        .accordion-button:not(.collapsed) {
-            color: var(--bs-success);
-            background-color: #f8f9fa;
-            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
-        }
-
-        .accordion-button:focus {
-            z-index: 3;
-            border-color: var(--bs-success);
-            outline: 0;
-            box-shadow: 0 0 0 .25rem rgba(25, 135, 84, .25);
-        }
-
-        .accordion-item {
-            border-radius: .5rem !important;
-            border: 1px solid #dee2e6;
-            overflow: hidden;
-        }
-
-        .accordion-button {
-            border-radius: .5rem !important;
-        }
-
-        .order-item-thumb {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 0.25rem;
-        }
-
-        .list-group-item {
-            background-color: transparent;
-        }
-    </style>
 </head>
 
 <body>

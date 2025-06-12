@@ -3,7 +3,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        // BAGIAN 1: FUNGSI LIVE SEARCH (TIDAK DIUBAH)
+        // FUNGSI LIVE SEARCH
         const searchContainer = document.querySelector('.search-container');
         if (searchContainer) {
             const searchInput = searchContainer.querySelector('input[name="search"]');
@@ -37,7 +37,7 @@
             });
         }
 
-        // BAGIAN 2: FUNGSI TAMBAH KERANJANG AJAX (SUDAH BENAR)
+        // FUNGSI TAMBAH KERANJANG AJAX
         const formTambahKeranjang = document.getElementById('form-tambah-keranjang');
         if (formTambahKeranjang) {
             formTambahKeranjang.addEventListener('submit', function(e) {
@@ -103,7 +103,7 @@
             });
         }
 
-        // BAGIAN 3: FUNGSI MODAL KONFIRMASI (KOSONGKAN KERANJANG) - PERBAIKAN DI SINI
+        // FUNGSI MODAL KONFIRMASI (KOSONGKAN KERANJANG)
         const konfirmasiAksiModal = document.getElementById('konfirmasiAksiModal');
         if (konfirmasiAksiModal) {
             // Fungsi untuk menangani klik pada tombol "Ya, Lanjutkan" di dalam modal
@@ -116,27 +116,25 @@
 
             const tombolAksi = konfirmasiAksiModal.querySelector('#tombolAksiModal');
 
-            // Hapus event listener lama jika ada, untuk mencegah duplikasi
-            // Ini adalah trik untuk memastikan event listener tidak menumpuk setiap kali kode dijalankan
             const newTombolAksi = tombolAksi.cloneNode(true);
             tombolAksi.parentNode.replaceChild(newTombolAksi, tombolAksi);
             newTombolAksi.addEventListener('click', handleAksiKonfirmasi);
 
             // Event listener saat modal akan ditampilkan
             konfirmasiAksiModal.addEventListener('show.bs.modal', event => {
-                const button = event.relatedTarget; // Tombol yang memicu modal
+                const button = event.relatedTarget; 
                 const pesan = button.getAttribute('data-pesan-konfirmasi');
                 const modalBody = konfirmasiAksiModal.querySelector('#konfirmasiAksiBody');
 
                 if (pesan) {
                     modalBody.textContent = pesan;
                 } else {
-                    modalBody.textContent = "Apakah Anda yakin ingin melanjutkan?"; // Pesan default
+                    modalBody.textContent = "Apakah Anda yakin ingin melanjutkan?";
                 }
             });
         }
 
-        // BAGIAN 4: FUNGSI UNTUK METODE PEMBAYARAN DI CHECKOUT
+        // FUNGSI UNTUK METODE PEMBAYARAN DI CHECKOUT
         const collapseBank = document.getElementById('collapseBank');
         const collapseEwallet = document.getElementById('collapseEwallet');
 
@@ -163,7 +161,7 @@
             });
         }
 
-        // BAGIAN 5: FUNGSI UNTUK ANIMASI FADE-IN ON SCROLL
+        // FUNGSI UNTUK ANIMASI FADE-IN ON SCROLL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -180,7 +178,7 @@
 
 
 
-        // BAGIAN 6: FUNGSI UNTUK CHATBOT 
+        // FUNGSI UNTUK CHATBOT 
         const chatbotToggler = document.querySelector(".chatbot-toggler");
         const chatbotWindow = document.querySelector(".chatbot-window");
         const closeBtn = document.querySelector(".chatbot-close-btn");
@@ -251,73 +249,6 @@
                     e.preventDefault();
                     handleChat();
                 }
-            });
-        }
-
-        // BAGIAN 6: FUNGSI UNTUK LIVE FILTER PRODUK
-        const filterForm = document.getElementById('filter-form');
-        const productContainer = document.getElementById('product-list-container');
-        const sortOption = document.getElementById('sort-option');
-        const searchInputNavbar = document.querySelector('.navbar input[name="search"]');
-
-        function fetchProducts() {
-            if (!productContainer || !filterForm) return;
-
-            // Tampilkan loading
-            productContainer.innerHTML = '';
-            productContainer.classList.add('loading');
-
-            const formData = new FormData(filterForm);
-
-            // Tambahkan keyword dari navbar ke form data
-            if (searchInputNavbar) {
-                formData.append('keyword', searchInputNavbar.value);
-            }
-
-            // Tambahkan opsi sorting ke form data
-            if (sortOption) {
-                formData.append('sort', sortOption.value);
-            }
-
-            // Kirim data menggunakan fetch API
-            fetch('ajax/filter_produk.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(html => {
-                    productContainer.classList.remove('loading');
-                    productContainer.innerHTML = html;
-
-                    // Re-inisialisasi observer untuk animasi fade-in pada elemen baru
-                    const newElementsToFadeIn = productContainer.querySelectorAll('.fade-in-element');
-                    newElementsToFadeIn.forEach(el => observer.observe(el));
-                })
-                .catch(error => {
-                    productContainer.classList.remove('loading');
-                    productContainer.innerHTML = '<div class="alert alert-danger">Gagal memuat produk.</div>';
-                    console.error('Error:', error);
-                });
-        }
-
-        // Panggil fetchProducts saat halaman pertama kali dimuat
-        if (document.getElementById('filter-form')) {
-            fetchProducts();
-        }
-
-        // Tambahkan event listener ke setiap elemen filter
-        if (filterForm) {
-            filterForm.addEventListener('change', fetchProducts);
-        }
-        if (sortOption) {
-            sortOption.addEventListener('change', fetchProducts);
-        }
-        if (searchInputNavbar) {
-            // Tambahkan debounce agar tidak terlalu sering fetch saat mengetik
-            let debounceTimer;
-            searchInputNavbar.addEventListener('keyup', () => {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(fetchProducts, 500); 
             });
         }
     });

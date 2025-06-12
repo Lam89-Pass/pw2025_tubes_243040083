@@ -1,5 +1,4 @@
 <?php
-// Pastikan sesi sudah dimulai di file utama yang memanggil header ini.
 require_once '../functions.php';
 protect_admin_page();
 ?>

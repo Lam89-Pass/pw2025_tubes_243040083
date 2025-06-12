@@ -39,7 +39,7 @@ body {
 }
 
 .search-input-group:focus-within {
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25); /* Efek glow hijau */
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
   border-color: #84cbb3;
 }
 
@@ -221,7 +221,6 @@ body {
   margin-bottom: 3rem;
 }
 
-/* === PERBAIKAN KARTU PRODUK DIMULAI DI SINI === */
 .card-product {
   border: 1px solid #e9ecef !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -238,14 +237,13 @@ body {
   align-items: center;
   justify-content: center;
   height: 160px;
-  overflow: hidden; /* Mencegah gambar keluar dari box */
+  overflow: hidden;
 }
 .product-image-container img {
   width: 100%;
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  /* Properti ini adalah kunci untuk memperbaiki gambar gepeng */
   object-fit: contain;
 }
 
@@ -264,8 +262,6 @@ body {
   font-weight: 700;
   color: var(--bs-success);
 }
-
-/* === AKHIR PERBAIKAN === */
 
 .pagination .page-link {
   color: var(--bs-success);
@@ -334,6 +330,21 @@ body {
   font-weight: 500;
 }
 
+.profile-nav-card .list-group-item.active {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+  color: white;
+}
+
+.info-label {
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.info-value {
+  font-weight: 500;
+}
+
 /* HALAMAN CHECKOUT */
 .summary-card {
   position: sticky;
@@ -358,7 +369,7 @@ body {
   border: 1px solid #dee2e6;
 }
 
-/* untuk radio button metode pembayaran */
+/* button metode pembayaran */
 .payment-option {
   border: 1px solid #dee2e6;
   border-radius: 0.5rem;
@@ -390,7 +401,6 @@ body {
   transition: color 0.2s ease;
 }
 
-/* Gaya saat radio button dipilih */
 .payment-option input[type="radio"]:checked + label {
   font-weight: 600;
 }
@@ -431,26 +441,19 @@ body {
   transform: translateY(-2px);
 }
 
-/* ====================================================== */
-/* CSS UNTUK ANIMASI FADE-IN ON SCROLL                      */
-/* ====================================================== */
-
-/* Elemen awalnya akan transparan dan sedikit bergeser ke bawah */
+/* ANIMASI FADE-IN ON SCROLL */
 .fade-in-element {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Saat kelas .is-visible ditambahkan oleh JavaScript, elemen akan muncul */
 .fade-in-element.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ====================================================== */
-/* CSS UNTUK CHATBOT                                      */
-/* ====================================================== */
+/* CHATBOT */
 
 .chatbot-toggler {
   position: fixed;
@@ -572,18 +575,38 @@ body {
   cursor: pointer;
 }
 
-.filter-sidebar {
-  position: sticky;
-  top: 100px;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
+
+/* Pesanan saya */
+.accordion-button:not(.collapsed) {
+  color: var(--bs-success);
+  background-color: #f8f9fa;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
 }
-#product-list-container.loading::after {
-  content: "Memuat...";
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
-  color: #6c757d;
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: var(--bs-success);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+.accordion-item {
+  border-radius: 0.5rem !important;
+  border: 1px solid #dee2e6;
+  overflow: hidden;
+}
+
+.accordion-button {
+  border-radius: 0.5rem !important;
+}
+
+.order-item-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+.list-group-item {
+  background-color: transparent;
 }
