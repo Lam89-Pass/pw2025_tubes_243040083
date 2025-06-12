@@ -163,7 +163,7 @@ if ($produk_beranda === false) {
                     </div>
                     <div class="col-lg-6">
                         <div class="ratio ratio-16x9 rounded shadow-lg overflow-hidden">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d3961.3690596980136!2d107.57165681536559!3d-6.84732239505117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e12b01452c2f%3A0x9b868a8f196a3e2a!2sJl.%20Ciwaruga%20No.26%2C%20Cigugur%20Girahang%2C%20Kec.%20Parongpong%2C%20Kabupaten%20Bandung%20Barat%2C%20Jawa%20Barat%2040559!5e0!3m2!1sid!2sid!4v1622800000000!5m2!1sid!2sid" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi BengkelinAja di Peta"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d513.792017056297!2d107.5749829090878!3d-6.863952499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6a095e66d47%3A0x4a56cef2729d5b5a!2s4HPG%2B94X%2C%20Jalan%20Waruga%20Jaya%2C%20Ciwaruga%2C%20Kec.%20Parongpong%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040559!5e1!3m2!1sid!2sid!4v1749747452167!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

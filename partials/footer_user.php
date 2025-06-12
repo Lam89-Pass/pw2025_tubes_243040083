@@ -56,10 +56,10 @@
             <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">
                 <h6 class="text-uppercase fw-bold mb-4">Kontak</h6>
                 <p class="text-white-50"><i class="bi bi-geo-alt-fill me-3"></i>Jl. Ciwaruga No. 26, Bandung</p>
-                <p class="text-white-50"><i class="bi bi-envelope-fill me-3"></i>info@bengkelinaja.com</p>
+                <p class="text-white-50"><i class="bi bi-envelope-fill me-3"></i>aaallaaamm@gmail.com</p>
                 <p class="text-white-50"><i class="bi bi-whatsapp me-3"></i>+62 852 2156 0909</p>
                 <div class="mt-4">
-                    <a href="#" class="btn btn-outline-light btn-floating m-1 social-icon" role="button"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/store_bengkelinaja" class="btn btn-outline-light btn-floating m-1 social-icon" role="button"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -88,6 +88,6 @@
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         &copy; <?= date("Y"); ?> BengkelinAja. Seluruh Hak Cipta Dilindungi.
-        <span class="text-white-50">| Dikembangkan oleh <a href="#" class="text-decoration-none fw-semibold" style="color: var(--bs-success);">Muhamad Nur Salam</a></span>
+        <span class="text-white-50">| Dikembangkan oleh <a href="https://www.instagram.com/lam.xyz_" class="text-decoration-none fw-semibold" style="color: var(--bs-success);">Muhamad Nur Salam</a></span>
     </div>
 </footer>
