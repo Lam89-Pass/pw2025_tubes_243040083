@@ -98,28 +98,61 @@ foreach ($keranjang_items as $item) {
                         <div class="card shadow-sm border-0">
                             <div class="card-body p-4">
                                 <h4 class="mb-3"><i class="bi bi-credit-card-2-front-fill me-2 text-success"></i>Metode Pembayaran</h4>
-                                <div class="d-grid gap-3">
-                                    <div class="payment-option">
-                                        <input id="transfer" name="metode_pembayaran" type="radio" class="form-check-input" value="Transfer Bank" checked required>
-                                        <label class="form-check-label" for="transfer">
-                                            <i class="bi bi-bank"></i>
-                                            <div>
-                                                <strong>Transfer Bank</strong><br>
-                                                <small class="text-muted">Pembayaran melalui transfer manual ke rekening kami.</small>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="payment-option">
-                                        <input id="cod" name="metode_pembayaran" type="radio" class="form-check-input" value="COD">
-                                        <label class="form-check-label" for="cod">
-                                            <i class="bi bi-cash-coin"></i>
-                                            <div>
-                                                <strong>Bayar di Tempat (COD)</strong><br>
-                                                <small class="text-muted">Siapkan uang pas saat kurir tiba.</small>
-                                            </div>
-                                        </label>
+
+                                <div class="payment-option mb-3">
+                                    <label class="form-check-label" data-bs-toggle="collapse" href="#collapseBank" role="button" aria-expanded="true" aria-controls="collapseBank">
+                                        <i class="bi bi-bank"></i>
+                                        <div>
+                                            <strong>Transfer Bank</strong><br>
+                                            <small class="text-muted">Bayar ke rekening virtual account kami.</small>
+                                        </div>
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </label>
+                                </div>
+                                <div class="collapse show" id="collapseBank">
+                                    <div class="ps-5 mb-3">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="bca" value="Transfer Bank BCA" checked required>
+                                            <label class="form-check-label" for="bca">Bank BCA</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="bri" value="Transfer Bank BRI">
+                                            <label class="form-check-label" for="bri">Bank BRI</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="mandiri" value="Transfer Bank Mandiri">
+                                            <label class="form-check-label" for="mandiri">Bank Mandiri</label>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="payment-option">
+                                    <label class="form-check-label" data-bs-toggle="collapse" href="#collapseEwallet" role="button" aria-expanded="false" aria-controls="collapseEwallet">
+                                        <i class="bi bi-wallet2"></i>
+                                        <div>
+                                            <strong>E-Wallet</strong><br>
+                                            <small class="text-muted">Pembayaran melalui DANA, OVO, atau GoPay.</small>
+                                        </div>
+                                        <i class="bi bi-chevron-down ms-auto"></i>
+                                    </label>
+                                </div>
+                                <div class="collapse" id="collapseEwallet">
+                                    <div class="ps-5 mt-3">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="dana" value="E-Wallet DANA">
+                                            <label class="form-check-label" for="dana">DANA</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="ovo" value="E-Wallet OVO">
+                                            <label class="form-check-label" for="ovo">OVO</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="metode_pembayaran" id="gopay" value="E-Wallet GoPay">
+                                            <label class="form-check-label" for="gopay">GoPay</label>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

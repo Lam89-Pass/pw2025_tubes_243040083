@@ -136,10 +136,9 @@ if (isset($conn) && $total_users > 0) {
                                         <input type="hidden" name="update_role" value="1">
                                     </form>
                                     <?php if ($user_item['id'] != ($_SESSION['user_id'] ?? 0)) : ?>
-                                        <a href="user_hapus.php?id=<?= $user_item['id']; ?>" class="btn btn-danger btn-sm" title="Hapus Pengguna" onclick="return confirm('Yakin ingin menghapus pengguna ini?');">
+                                        <a href="user_hapus.php?id=<?= $user_item['id']; ?>" class="btn btn-danger btn-sm" title="Hapus Pengguna" data-bs-toggle="modal" data-bs-target="#konfirmasiHapusModal">
                                             <i class="bi bi-person-x-fill"></i>
-                                        </a>
-                                    <?php else: ?>
+                                        </a> <?php else: ?>
                                         <button class="btn btn-secondary btn-sm" title="Tidak dapat menghapus diri sendiri" disabled><i class="bi bi-person-x-fill"></i></button>
                                     <?php endif; ?>
                                 </td>

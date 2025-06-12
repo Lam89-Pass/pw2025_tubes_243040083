@@ -143,7 +143,9 @@ $all_categories = get_all_categories();
                             <td><span class="badge bg-secondary"><?= htmlspecialchars($produk['nama_kategori'] ?? 'N/A'); ?></span></td>
                             <td class="text-center action-buttons">
                                 <a href="produk_edit.php?id=<?= $produk['id']; ?>" class="btn btn-warning btn-sm" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                                <a href="produk_hapus.php?id=<?= $produk['id']; ?>" class="btn btn-danger btn-sm" title="Hapus" onclick="return confirm('Yakin hapus produk ini?');"><i class="bi bi-trash3-fill"></i></a>
+                                <a href="produk_hapus.php?id=<?= $produk['id']; ?>" class="btn btn-danger btn-sm" title="Hapus" data-bs-toggle="modal" data-bs-target="#konfirmasiHapusModal">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach;

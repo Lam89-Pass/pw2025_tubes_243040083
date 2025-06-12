@@ -56,12 +56,9 @@ $all_comments = query("SELECT k.id_komentar, k.komentar, k.created_at, u.usernam
                                 <td><a href="../detail_produk.php?id=<?= $comment['product_id_link']; ?>" target="_blank" class="text-decoration-none"><?= htmlspecialchars($comment['product_name']); ?></a></td>
                                 <td><?= date('d M Y, H:i', strtotime($comment['created_at'])); ?></td>
                                 <td class="text-center action-buttons">
-                                    <form method="POST" action="komentar_data.php" onsubmit="return confirm('Apakah Anda yakin ingin menghapus komentar ini secara permanen?');" class="d-inline">
-                                        <input type="hidden" name="id_komentar" value="<?= $comment['id_komentar']; ?>">
-                                        <button type="submit" name="hapus_komentar" class="btn btn-danger btn-sm" title="Hapus Komentar">
-                                            <i class="bi bi-trash3-fill"></i>
-                                        </button>
-                                    </form>
+                                    <a href="komentar_hapus.php?id=<?= $comment['id_komentar']; ?>" class="btn btn-danger btn-sm" title="Hapus Komentar" data-bs-toggle="modal" data-bs-target="#konfirmasiHapusModal">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

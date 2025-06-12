@@ -18,11 +18,18 @@ if (!isset($conn) || !$conn) {
 function query($query_string)
 {
     global $conn;
-    if (!$conn) return false;
+    if (!$conn) {
+        return false;
+    }
     $result = mysqli_query($conn, $query_string);
-    if (!$result) {
+
+    // Periksa jika query gagal total
+    if ($result === false) {
         error_log("Query Error: " . mysqli_error($conn) . " | Query: " . $query_string);
         return false;
+    }
+    if (is_bool($result)) {
+        return mysqli_affected_rows($conn);
     }
     $rows = [];
     while ($row = mysqli_fetch_assoc($result)) {

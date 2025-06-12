@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Ambil item keranjang dari DATABASE
 $keranjang_items = ambil_keranjang_dari_db($user_id);
 $total_belanja = 0;
-$jumlah_item_keranjang = !empty($keranjang_items) ? array_sum(array_column($keranjang_items, 'kuantitas')) : 0;
+$jumlah_item_keranjang = !empty($keranjang_items) ? count($keranjang_items) : 0;
 ?>
 <!doctype html>
 <html lang="id">
@@ -81,7 +81,6 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? array_sum(array_column($kera
 
         <?php if (!empty($keranjang_items)) : ?>
             <div class="row g-4">
-                <!-- Kolom Tabel Keranjang -->
                 <div class="col-lg-8">
                     <div class="card shadow-sm">
                         <div class="card-body p-0">
@@ -121,7 +120,9 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? array_sum(array_column($kera
                                                 <td class="text-center py-2">
                                                     <form method="POST" action="keranjang.php" class="d-inline">
                                                         <input type="hidden" name="id_produk_hapus" value="<?= $id_item; ?>">
-                                                        <button type="submit" name="hapus_item_keranjang" class="btn btn-danger btn-sm" title="Hapus Item"><i class="bi bi-trash3-fill"></i></button>
+                                                        <button type="submit" name="hapus_item_keranjang" class="btn btn-danger btn-sm" title="Hapus Item" onclick="return confirm('Yakin ingin menghapus item ini dari keranjang?');">
+                                                            <i class="bi bi-trash3-fill"></i>
+                                                        </button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -133,7 +134,6 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? array_sum(array_column($kera
                     </div>
                 </div>
 
-                <!-- Kolom Ringkasan Belanja -->
                 <div class="col-lg-4">
                     <div class="cart-summary">
                         <h4 class="h5 fw-bold mb-3">Ringkasan Belanja</h4>
@@ -150,8 +150,12 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? array_sum(array_column($kera
                             <a href="checkout.php" class="btn btn-success btn-lg">
                                 <i class="bi bi-wallet-fill me-2"></i>Lanjut ke Pembayaran
                             </a>
-                            <form method="POST" action="keranjang.php" class="d-grid">
-                                <button type="submit" name="kosongkan_keranjang" class="btn btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin mengosongkan keranjang?');">
+                            <form method="POST" action="keranjang.php" class="d-grid" id="form-kosongkan-keranjang">
+                                <input type="hidden" name="kosongkan_keranjang" value="1">
+                                <button type="button" class="btn btn-outline-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#konfirmasiAksiModal"
+                                    data-pesan-konfirmasi="Apakah Anda yakin ingin mengosongkan seluruh isi keranjang?">
                                     <i class="bi bi-cart-x-fill me-2"></i>Kosongkan Keranjang
                                 </button>
                             </form>

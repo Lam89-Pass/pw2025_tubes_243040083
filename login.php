@@ -10,7 +10,6 @@ require 'functions.php';
 $error_message = '';
 $success_message = '';
 
-// Menangkap pesan sukses dari halaman registrasi atau ubah password
 if (isset($_SESSION['success_message_register'])) {
     $success_message = $_SESSION['success_message_register'];
     unset($_SESSION['success_message_register']);
@@ -26,7 +25,6 @@ if (isset($_POST["login"])) {
         if (empty($username) || empty($password)) {
             $error_message = "Username dan password wajib diisi.";
         } else {
-            // Menggunakan prepared statement untuk keamanan
             $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE username = ?");
             mysqli_stmt_bind_param($stmt, "s", $username);
             mysqli_stmt_execute($stmt);
@@ -35,18 +33,16 @@ if (isset($_POST["login"])) {
             if (mysqli_num_rows($result) === 1) {
                 $row = mysqli_fetch_assoc($result);
                 if (password_verify($password, $row["password"])) {
-                    // Set session untuk pengguna yang berhasil login
                     $_SESSION["login"] = true;
                     $_SESSION["user_id"] = $row["id"];
                     $_SESSION["username"] = $row["username"];
-                    // Simpan peran pengguna (role) ke dalam session
                     $_SESSION["user_role"] = $row["role"];
 
                     header("Location: dashboard.php");
                     exit;
                 }
             }
-            // Jika username tidak ditemukan atau password salah
+            // Jika username atau password salah, pesan error akan disiapkan
             $error_message = "Username atau password salah!";
         }
     } else {
@@ -62,12 +58,59 @@ if (isset($_POST["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | BengkelinAja</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login_user.css?v=<?= time(); ?>">
+
+    <style>
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #loading-overlay img {
+            max-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        #loading-overlay .loading-text {
+            font-weight: 500;
+            color: #333;
+            font-size: 1.1rem;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+    </style>
 </head>
 
 <body class="login-layout">
+
+    <div id="loading-overlay" style="display: none;">
+        <img src="img/logoasli.png" alt="Loading Logo">
+        <p class="loading-text">Memuat...</p>
+    </div>
+
     <div class="container-fluid p-0">
         <div class="row g-0 full-height">
             <div class="col-lg-5 info-panel d-none d-lg-flex">
@@ -88,7 +131,7 @@ if (isset($_POST["login"])) {
                         <div class="alert alert-danger" role="alert"><?= htmlspecialchars($error_message); ?></div>
                     <?php endif; ?>
 
-                    <form action="login.php" method="POST">
+                    <form action="login.php" method="POST" id="login-form">
                         <div class="mb-3"><label for="username" class="form-label">Username</label><input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username Anda" required></div>
                         <div class="mb-4"><label for="password" class="form-label">Password</label><input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password Anda" required></div>
                         <button type="submit" name="login" class="btn btn-submit w-100">Login</button>
@@ -99,6 +142,18 @@ if (isset($_POST["login"])) {
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                // Tampilkan overlay loading setiap kali tombol submit ditekan
+                loadingOverlay.style.display = 'flex';
+                });
+        }
+    </script>
 </body>
 
 </html>

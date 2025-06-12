@@ -73,7 +73,7 @@ $categories = get_all_categories();
                                             <a href="kategori_edit.php?id=<?= $kategori['id_kategori']; ?>" class="btn btn-warning btn-sm" title="Edit">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
-                                            <a href="kategori_hapus.php?id=<?= $kategori['id_kategori']; ?>" class="btn btn-danger btn-sm" title="Hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori \" <?= htmlspecialchars(addslashes($kategori['nama_kategori'])); ?>\"?');">
+                                            <a href="kategori_hapus.php?id=<?= $kategori['id_kategori']; ?>" class="btn btn-danger btn-sm" title="Hapus" data-bs-toggle="modal" data-bs-target="#konfirmasiHapusModal">
                                                 <i class="bi bi-trash3-fill"></i>
                                             </a>
                                         </td>

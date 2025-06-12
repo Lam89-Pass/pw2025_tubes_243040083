@@ -68,28 +68,28 @@ if ($produk_beranda === false) {
         <section class="py-5">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-md-3">
+                    <div class="col-md-3 fade-in-element">
                         <div class="feature-card">
                             <i class="bi bi-box-seam-fill"></i>
                             <h5 class="fw-bold">Produk Lengkap</h5>
                             <p class="text-muted small">Lebih dari 1.500+ jenis sparepart dari berbagai merek ternama.</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 fade-in-element">
                         <div class="feature-card">
                             <i class="bi bi-patch-check-fill"></i>
                             <h5 class="fw-bold">100% Original</h5>
                             <p class="text-muted small">Kami menjamin keaslian setiap produk yang kami jual.</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 fade-in-element">
                         <div class="feature-card">
                             <i class="bi bi-credit-card-2-front-fill"></i>
                             <h5 class="fw-bold">Pembayaran Aman</h5>
                             <p class="text-muted small">Tersedia berbagai metode pembayaran yang aman dan terpercaya.</p>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 fade-in-element">
                         <div class="feature-card">
                             <i class="bi bi-truck"></i>
                             <h5 class="fw-bold">Pengiriman Cepat</h5>
@@ -111,7 +111,7 @@ if ($produk_beranda === false) {
                 <div class="row g-3">
                     <?php if (!empty($produk_beranda)) : ?>
                         <?php foreach ($produk_beranda as $row) : ?>
-                            <div class="col-lg-2 col-md-4 col-6">
+                            <div class="col-lg-2 col-md-4 col-6 fade-in-element">
                                 <div class="card card-product h-100">
                                     <div class="product-image-container">
                                         <a href="detail_produk.php?id=<?= htmlspecialchars($row["id"]); ?>">

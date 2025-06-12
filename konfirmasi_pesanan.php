@@ -12,7 +12,7 @@ $order_id = (int)$_GET['order_id'];
 $user_id = (int)$_SESSION['user_id'];
 $pesanan = get_pesanan_by_id($order_id);
 if (!$pesanan || $pesanan['user_id'] != $user_id) {
-    header("Location: pesanan_saya.php"); 
+    header("Location: pesanan_saya.php");
     exit;
 }
 ?>
@@ -45,19 +45,39 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                                 <?php unset($_SESSION['success_message_checkout']); ?>
                             <?php endif; ?>
 
-                            <p>Nomor pesanan Anda adalah: <strong class="text-success fs-5">#<?= htmlspecialchars($order_id); ?></strong></p>
+                            <p>Nomor pesanan Anda adalah: <strong class="text-success fs-5"><?= htmlspecialchars($order_id); ?></strong></p>
 
-                            <?php if ($pesanan['metode_pembayaran'] == 'Transfer Bank'): ?>
-                                <div class="alert alert-success mt-4">
+                            <?php
+                            $metode_pembayaran = $pesanan['metode_pembayaran'];
+
+                            if (str_starts_with($metode_pembayaran, 'Transfer Bank')) :
+                                // Mengambil nama bank dari string, contoh: "Transfer Bank BCA" -> "BCA"
+                                $nama_bank = trim(str_replace('Transfer Bank', '', $metode_pembayaran));
+                            ?>
+                                <div class="alert alert-success mt-4 text-start">
                                     <h4 class="alert-heading">Instruksi Pembayaran</h4>
                                     <p>Silakan lakukan pembayaran sebesar <strong>Rp <?= number_format($pesanan['total_harga'], 0, ',', '.'); ?></strong> ke rekening berikut:</p>
                                     <hr>
-                                    <p class="mb-0">Bank BCA: <strong>1234-5678-90</strong> a/n BengkelinAja</p>
-                                    <p>Mohon sertakan nomor pesanan Anda (#<?= htmlspecialchars($order_id); ?>) pada berita transfer.</p>
+                                    <p class="mb-0">Bank <?= htmlspecialchars($nama_bank); ?>: <strong>1234-5678-90</strong> a/n BengkelinAja</p>
+                                    <p>Mohon sertakan nomor pesanan Anda (<?= htmlspecialchars($order_id); ?>) pada berita transfer.</p>
                                 </div>
-                            <?php else: ?>
-                                <div class="alert alert-info mt-4">
-                                    <p class="mb-0">Anda memilih metode <strong>Bayar di Tempat (COD)</strong>. Mohon siapkan uang pas saat kurir kami tiba.</p>
+
+                            <?php elseif (str_starts_with($metode_pembayaran, 'E-Wallet')) :
+                                // Mengambil nama e-wallet dari string
+                                $nama_ewallet = trim(str_replace('E-Wallet', '', $metode_pembayaran));
+                            ?>
+                                <div class="alert alert-info mt-4 text-start">
+                                    <h4 class="alert-heading">Instruksi Pembayaran</h4>
+                                    <p>Silakan lakukan pembayaran sebesar <strong>Rp <?= number_format($pesanan['total_harga'], 0, ',', '.'); ?></strong> ke akun E-Wallet kami.</p>
+                                    <hr>
+                                    <p class="mb-0">Metode: <strong><?= htmlspecialchars($nama_ewallet); ?></strong></p>
+                                    <p>Nomor/ID: <strong>085221560909</strong> a/n BengkelinAja</p>
+                                </div>
+
+                            <?php else: // Fallback untuk metode lain jika ada 
+                            ?>
+                                <div class="alert alert-light mt-4">
+                                    <p class="mb-0">Pesanan Anda akan segera kami proses. Terima kasih!</p>
                                 </div>
                             <?php endif; ?>
 

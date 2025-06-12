@@ -11,6 +11,31 @@ $offset = ($halaman_aktif - 1) * $pesanan_per_halaman;
 
 $filter_status = isset($_GET['status']) ? $_GET['status'] : '';
 $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
+$sort_option = isset($_GET['sort_option']) ? $_GET['sort_option'] : 'id_asc'; // Default ke ID terlama
+
+// --- PERBAIKAN: LOGIKA UNTUK FILTER URUTKAN ---
+$sort_column = 'id_pesanan';
+$sort_order = 'ASC';
+
+switch ($sort_option) {
+    case 'tanggal_desc':
+        $sort_column = 'tanggal_pesanan';
+        $sort_order = 'DESC';
+        break;
+    case 'tanggal_asc':
+        $sort_column = 'tanggal_pesanan';
+        $sort_order = 'ASC';
+        break;
+    case 'id_desc':
+        $sort_column = 'id_pesanan';
+        $sort_order = 'DESC';
+        break;
+    case 'id_asc':
+    default:
+        $sort_column = 'id_pesanan';
+        $sort_order = 'ASC';
+        break;
+}
 
 $base_sql = "FROM pesanan p JOIN users u ON p.user_id = u.id";
 $where_conditions = [];
@@ -49,7 +74,7 @@ if (isset($conn) && $conn) {
 
 // Ambil data pesanan untuk halaman ini
 $pesanan_list = [];
-$sql_data = "SELECT p.id_pesanan, p.tanggal_pesanan, p.total_harga, p.status_pesanan, u.username, p.nama_penerima " . $base_sql . $where_clause . " ORDER BY p.tanggal_pesanan DESC LIMIT ? OFFSET ?";
+$sql_data = "SELECT p.id_pesanan, p.tanggal_pesanan, p.total_harga, p.status_pesanan, u.username, p.nama_penerima " . $base_sql . $where_clause . " ORDER BY p.$sort_column $sort_order LIMIT ? OFFSET ?";
 $params_data = $params;
 $params_data[] = $pesanan_per_halaman;
 $params_data[] = $offset;
@@ -71,19 +96,23 @@ if ($stmt_data) {
 </div>
 
 <div class="card">
-    <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
         <h5 class="mb-0">Daftar Semua Pesanan</h5>
-        <form method="GET" action="pesanan_data.php" class="d-flex" style="width: 100%; max-width: 500px;">
-            <input type="text" class="form-control me-2" name="search" placeholder="Cari ID Pesanan / Username..." value="<?= htmlspecialchars($search_query); ?>">
-            <select class="form-select me-2" name="status" style="width: auto;">
-                <option value="">-- Semua Status --</option>
+        <form method="GET" action="pesanan_data.php" class="d-flex align-items-center gap-2" style="max-width: 600px;">
+            <input type="text" class="form-control" name="search" placeholder="Cari ID/Username..." value="<?= htmlspecialchars($search_query); ?>">
+            <select class="form-select" name="status">
+                <option value="">Semua Status</option>
                 <option value="Menunggu Pembayaran" <?= ($filter_status == 'Menunggu Pembayaran') ? 'selected' : ''; ?>>Menunggu Pembayaran</option>
                 <option value="Diproses" <?= ($filter_status == 'Diproses') ? 'selected' : ''; ?>>Diproses</option>
                 <option value="Dikirim" <?= ($filter_status == 'Dikirim') ? 'selected' : ''; ?>>Dikirim</option>
                 <option value="Selesai" <?= ($filter_status == 'Selesai') ? 'selected' : ''; ?>>Selesai</option>
                 <option value="Dibatalkan" <?= ($filter_status == 'Dibatalkan') ? 'selected' : ''; ?>>Dibatalkan</option>
             </select>
-            <button class="btn btn-info" type="submit">Filter</button>
+            <select class="form-select" name="sort_option" onchange="this.form.submit()">
+                <option value="id_asc" <?= ($sort_option == 'id_asc') ? 'selected' : ''; ?>>Terlama</option>
+                <option value="tanggal_desc" <?= ($sort_option == 'tanggal_desc') ? 'selected' : ''; ?>>Terbaru</option>
+            </select>
+            <button class="btn btn-info text-nowrap" type="submit">Cari</button>
         </form>
     </div>
     <div class="card-body p-0">
@@ -138,10 +167,12 @@ if ($stmt_data) {
             <nav class="d-flex justify-content-center">
                 <ul class="pagination mb-0">
                     <?php
+                    // Logika pagination tidak perlu diubah, hanya pastikan parameter sort_option ikut terbawa
                     $base_url = "pesanan_data.php?";
                     $query_params = [];
                     if (!empty($search_query)) $query_params['search'] = $search_query;
                     if (!empty($filter_status)) $query_params['status'] = $filter_status;
+                    if ($sort_option != 'id_asc') $query_params['sort_option'] = $sort_option; // Bawa parameter jika bukan default
                     $base_url .= http_build_query($query_params);
                     $separator = empty($query_params) ? '' : '&';
                     ?>

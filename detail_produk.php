@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_ke_keranjang']
     $user_id = (int)$_SESSION['user_id'];
     if ($id_produk_keranjang > 0 && $kuantitas > 0 && $produk_detail) {
         $result = tambah_ke_keranjang_db($user_id, $id_produk_keranjang, $kuantitas);
-        $_SESSION['pesan_flash'] = $result; 
+        $_SESSION['pesan_flash'] = $result;
         header("Location: detail_produk.php?id=" . $id_produk_lihat);
         exit;
     }
@@ -153,7 +153,7 @@ if (isset($_SESSION['pesan_flash'])) {
 
                 <?php if (isset($pesan_flash_data)): ?>
                     <div class="alert <?= $pesan_flash_data['success'] ? 'alert-success' : 'alert-danger'; ?> alert-dismissible fade show" role="alert">
-                        <?= $pesan_flash_data['message']; 
+                        <?= $pesan_flash_data['message'];
                         ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -211,7 +211,7 @@ if (isset($_SESSION['pesan_flash'])) {
                             <div class="card action-card">
                                 <div class="card-body">
                                     <h6 class="card-title">Atur jumlah</h6>
-                                    <form method="POST" action="detail_produk.php?id=<?= $id_produk_lihat; ?>">
+                                    <form method="POST" action="detail_produk.php?id=<?= $id_produk_lihat; ?>" id="form-tambah-keranjang">
                                         <input type="hidden" name="id_produk" value="<?= $produk_detail['id']; ?>">
                                         <div class="d-flex justify-content-between align-items-center my-3">
                                             <label for="kuantitas" class="form-label mb-0">Kuantitas:</label>

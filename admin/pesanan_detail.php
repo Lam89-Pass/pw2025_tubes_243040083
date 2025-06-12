@@ -30,7 +30,7 @@ $detail_items = get_detail_pesanan_items($id_pesanan);
 
 // Jika pesanan tidak ditemukan, kembali ke halaman daftar pesanan
 if (!$pesanan) {
-    $_SESSION['error_message_crud'] = "Pesanan dengan ID #" . $id_pesanan . " tidak ditemukan.";
+    $_SESSION['error_message_crud'] = "Pesanan dengan ID No. " . $id_pesanan . " tidak ditemukan.";
     header("Location: pesanan_data.php");
     exit;
 }
@@ -38,7 +38,7 @@ require_once 'partials/header_admin.php';
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><a href="pesanan_data.php" class="text-dark text-decoration-none"><i class="bi bi-arrow-left"></i></a> Detail Pesanan #<?= $pesanan['id_pesanan']; ?></h1>
+    <h1 class="h2"><a href="pesanan_data.php" class="text-dark text-decoration-none"><i class="bi bi-arrow-left"></i></a> Detail Pesanan No. <?= $pesanan['id_pesanan']; ?></h1>
 </div>
 
 <div class="row g-4">

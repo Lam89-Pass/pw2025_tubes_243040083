@@ -32,7 +32,7 @@
                     }
                     if ($jumlah_item_di_navbar > 0) :
                     ?>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65em;">
+                        <span id="cart-item-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65em;">
                             <?= $jumlah_item_di_navbar; ?>
                         </span>
                     <?php endif; ?>
