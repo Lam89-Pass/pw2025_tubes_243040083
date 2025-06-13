@@ -21,7 +21,7 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pesanan Berhasil | Bengkelin Aja</title>
+    <title>Pesanan Berhasil | Seiko Motor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/dashboard.css?v=<?= time(); ?>">
@@ -56,7 +56,7 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                                     <h4 class="alert-heading">Instruksi Pembayaran</h4>
                                     <p>Silakan lakukan pembayaran sebesar <strong>Rp <?= number_format($pesanan['total_harga'], 0, ',', '.'); ?></strong> ke rekening berikut:</p>
                                     <hr>
-                                    <p class="mb-0">Bank <?= htmlspecialchars($nama_bank); ?>: <strong>1234-5678-90</strong> a/n BengkelinAja</p>
+                                    <p class="mb-0">Bank <?= htmlspecialchars($nama_bank); ?>: <strong>1234-260405-20</strong> a/n Seiko Motor</p>
                                     <p>Mohon sertakan nomor pesanan Anda (<?= htmlspecialchars($order_id); ?>) pada berita transfer.</p>
                                 </div>
 
@@ -68,7 +68,7 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                                     <p>Silakan lakukan pembayaran sebesar <strong>Rp <?= number_format($pesanan['total_harga'], 0, ',', '.'); ?></strong> ke akun E-Wallet kami.</p>
                                     <hr>
                                     <p class="mb-0">Metode: <strong><?= htmlspecialchars($nama_ewallet); ?></strong></p>
-                                    <p>Nomor/ID: <strong>085221560909</strong> a/n BengkelinAja</p>
+                                    <p>Nomor/ID: <strong>085221560909</strong> a/n Seiko Motor</p>
                                 </div>
 
                             <?php else: 

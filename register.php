@@ -26,7 +26,7 @@ if (isset($_POST["register"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun | BengkelinAja</title>
+    <title>Daftar Akun | Seiko Motor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login_user.css?v=<?= time(); ?>">
@@ -38,7 +38,7 @@ if (isset($_POST["register"])) {
             <div class="col-lg-5 info-panel d-none d-lg-flex">
                 <div>
                     <div class="logo-area">
-                        <img src="img/logoputih.png" alt="BengkelinAja Logo Putih" style="max-width: 300px;">
+                        <img src="img/logoputih.png" alt="Seiko Motor" style="max-width: 300px;">
                     </div>
                     <p class="app-description">
                         Satu langkah lebih dekat dengan sparepart berkualitas. Daftar sekarang dan nikmati kemudahan berbelanja.

@@ -575,7 +575,6 @@ body {
   cursor: pointer;
 }
 
-
 /* Pesanan saya */
 .accordion-button:not(.collapsed) {
   color: var(--bs-success);
@@ -609,4 +608,10 @@ body {
 
 .list-group-item {
   background-color: transparent;
+}
+
+.profile-nav-card .list-group-item.active {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+  color: white;
 }

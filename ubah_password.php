@@ -35,17 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ubah_password'
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= htmlspecialchars($page_title); ?> | Bengkelin Aja</title>
+    <title><?= htmlspecialchars($page_title); ?> | Seiko Motor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/dashboard.css?v=<?= time(); ?>">
-    <style>
-        .profile-nav-card .list-group-item.active {
-            background-color: var(--bs-success);
-            border-color: var(--bs-success);
-            color: white;
-        }
-    </style>
 </head>
 
 <body>
