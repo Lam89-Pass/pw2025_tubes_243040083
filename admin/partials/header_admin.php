@@ -14,8 +14,8 @@ protect_admin_page();
     <meta name="keywords" content="sparepart motor, suku cadang motor, oli motor, helm motor, aksesoris motor">
     <meta name="author" content="Seiko Motor">
     <meta name="theme-color" content="#28a745">
-    <link rel="icon" href="img/seiko.png" type="image/png">
-    <link rel="apple-touch-icon" href="img/seiko.png">
+    <link rel="icon" href="../../img/seiko.png" type="image/png">
+    <link rel="apple-touch-icon" href="../../img/seiko.png">
     <title><?= isset($page_title) ? htmlspecialchars($page_title) : 'Admin Panel'; ?> | Bengkelin Aja</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
