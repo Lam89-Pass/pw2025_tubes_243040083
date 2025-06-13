@@ -26,7 +26,7 @@ protect_admin_page();
                     <!-- Menu Dashboard -->
                     <div>
                         <a href="index.php" class="sidebar-brand">
-                            <img src="../img/logoputih.png" alt="BengkelinAja Logo Putih" style="max-height: 80px; width: auto;"><br>
+                            <img src="../img/logoputih.png" alt="SeikoMotor Logo Putih" style="max-height: 80px; width: auto;"><br>
                         </a>
                         <ul class="nav flex-column mt-3">
                             <li class="nav-item">
@@ -54,7 +54,6 @@ protect_admin_page();
                         </ul>
                     </div>
                     <div class="logout-wrapper mb-5">
-                        <!-- Kembali ke dashboard user dan Logout -->
                         <a href="../dashboard.php" target="_blank" class="btn btn-outline-light w-100 mb-2"><i class="bi bi-globe me-2"></i>Lihat Situs</a>
                         <a href="logout_admin.php" class="btn logout-btn"><i class="bi bi-box-arrow-left me-2"></i>Logout</a>
                     </div>

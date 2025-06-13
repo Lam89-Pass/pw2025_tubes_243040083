@@ -64,11 +64,8 @@ if (isset($_GET['kategori']) && !empty($_GET['kategori'])) {
 $where_clause = !empty($where_conditions) ? " WHERE " . implode(" AND ", $where_conditions) : "";
 
 
-// Data untuk mengisi filter
 $all_categories = get_all_categories();
 $all_merek = get_all_merek();
-
-// Ambil data produk awal (tanpa filter) untuk ditampilkan saat pertama kali halaman dimuat
 $initial_products = query("SELECT p.id, p.name, p.price, p.original_price, p.image FROM product p ORDER BY created_at DESC LIMIT 12");
 
 

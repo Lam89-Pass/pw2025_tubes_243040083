@@ -16,13 +16,11 @@ if (!$user_profile) {
     exit;
 }
 
-// Tentukan mode tampilan 'view' (default) atau 'edit'
 $mode = isset($_GET['mode']) && $_GET['mode'] === 'edit' ? 'edit' : 'view';
 
 $page_title = "Profil Saya";
 $pesan_update = '';
 
-// Proses form jika ada data yang dikirim
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profil'])) {
     $_POST['foto_profil_lama'] = $user_profile['foto_profil'] ?? '';
     $result = update_user_profile($user_id, $_POST, $_FILES);
@@ -37,13 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profil'])) {
     }
 }
 
-// Ambil pesan sukses dari sesi
 if (isset($_SESSION['success_message_profile'])) {
     $pesan_update = '<div class="alert alert-success alert-dismissible fade show" role="alert">' . htmlspecialchars($_SESSION['success_message_profile']) . '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     unset($_SESSION['success_message_profile']);
 }
 
-// Inisialisasi variabel untuk form/tampilan
 $nama_lengkap_form = $user_profile['nama_lengkap'] ?? '';
 $jenis_kelamin_form = $user_profile['jenis_kelamin'] ?? '';
 $tanggal_lahir_form = $user_profile['tanggal_lahir'] ?? '';
@@ -69,7 +65,7 @@ $alamat_lengkap_form = $user_profile['alamat_lengkap'] ?? '';
     <div class="main-content-wrapper">
         <div class="container my-5">
             <div class="row g-4">
-                <!-- Kolom Kiri Navigasi Profil -->
+                <!-- Navigasi Profil -->
                 <div class="col-lg-4">
                     <div class="card shadow-sm profile-nav-card">
                         <div class="card-body text-center">
@@ -87,7 +83,7 @@ $alamat_lengkap_form = $user_profile['alamat_lengkap'] ?? '';
                     </div>
                 </div>
 
-                <!-- Kolom Kanan Tampilan atau Form Edit -->
+                <!-- Tampilan atau Form Edit -->
                 <div class="col-lg-8">
                     <div class="card shadow-sm">
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">

@@ -3,11 +3,9 @@ session_start();
 require_once '../functions.php'; 
 protect_admin_page(); 
 
-// Proses form submission SEBELUM output HTML apa pun.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = tambah_produk($_POST, $_FILES);
     if ($result['success']) {
-        // Jika sukses, set pesan dan redirect.
         $_SESSION['success_message'] = $result['message'];
         header("Location: produk_data.php"); 
         exit;
@@ -16,12 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Data yang dibutuhkan untuk menampilkan form.
 $page_title = "Tambah Produk Baru";
 $all_merek = get_all_merek();
 $categories = get_all_categories();
 
-// Inisialisasi variabel untuk repopulate form fields jika ada error
 $nama_produk = $_POST['nama_produk'] ?? '';
 $category_id_selected = $_POST['category_id'] ?? '';
 $harga = $_POST['harga'] ?? '';

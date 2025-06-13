@@ -146,12 +146,8 @@ $pdf->SetFillColor(230, 230, 230);
 $pdf->SetTextColor(0);
 $pdf->SetDrawColor(128, 128, 128);
 $pdf->SetLineWidth(0.3);
-
-// Lebar kolom tabel
 $pdf->SetWidths(array(10, 85, 35, 20, 40));
-// Perataan kolom
 $pdf->SetAligns(array('C', 'L', 'R', 'C', 'L'));
-// Data header
 $header = array('ID', 'Nama Produk', 'Harga (Rp)', 'Stok', 'Kategori');
 
 $pdf->Row($header);

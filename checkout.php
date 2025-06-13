@@ -9,27 +9,21 @@ if (!isset($_SESSION["login"]) || !isset($_SESSION['user_id'])) {
 
 $user_id = (int)$_SESSION['user_id'];
 
-// Pastikan keranjang tidak kosong, jika kosong, kembalikan ke halaman keranjang
 $keranjang_items = ambil_keranjang_dari_db($user_id);
 if (empty($keranjang_items)) {
     header("Location: keranjang.php");
     exit;
 }
-
-// Ambil data profil pengguna untuk mengisi form secara otomatis
 $user_profile = get_user_by_id($user_id);
 
-// Proses form jika pengguna menekan tombol Buat Pesanan
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buat_pesanan'])) {
     $result = buat_pesanan($user_id, $_POST);
 
     if ($result['success']) {
-        // Jika sukses, arahkan ke halaman konfirmasi dengan ID pesanan
         $_SESSION['success_message_checkout'] = $result['message'];
         header("Location: konfirmasi_pesanan.php?order_id=" . $result['order_id']);
         exit;
     } else {
-        // Jika gagal, simpan pesan error untuk ditampilkan di halaman ini
         $_SESSION['error_message_checkout'] = $result['message'];
         header("Location: checkout.php");
         exit;
@@ -75,7 +69,7 @@ foreach ($keranjang_items as $item) {
 
             <form method="POST" action="checkout.php">
                 <div class="row g-5">
-                    <!-- Kolom Kiri Form Alamat & Pembayaran -->
+                    <!-- Form Alamat & Pembayaran -->
                     <div class="col-lg-7">
                         <div class="card shadow-sm border-0 mb-4">
                             <div class="card-body p-4">
@@ -157,7 +151,7 @@ foreach ($keranjang_items as $item) {
                         </div>
                     </div>
 
-                    <!-- Kolom Kanan Ringkasan Pesanan -->
+                    <!-- Ringkasan Pesanan -->
                     <div class="col-lg-5">
                         <div class="card shadow-sm summary-card border-0">
                             <div class="card-header bg-light">

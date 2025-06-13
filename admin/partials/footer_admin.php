@@ -28,18 +28,10 @@
         const konfirmasiHapusModal = document.getElementById('konfirmasiHapusModal');
 
         if (konfirmasiHapusModal) {
-            // Event ini akan berjalan TEPAT SEBELUM modal ditampilkan
             konfirmasiHapusModal.addEventListener('show.bs.modal', function(event) {
-                // Dapatkan tombol/link yang diklik oleh user
                 const button = event.relatedTarget;
-
-                // Ambil URL untuk proses hapus dari atribut 'href' tombol tersebut
                 const urlHapus = button.getAttribute('href');
-
-                // Cari tombol 'Ya, Hapus' di dalam modal
                 const tombolHapusDiModal = konfirmasiHapusModal.querySelector('#tombolHapusModal');
-
-                // Setel atribut 'href' pada tombol 'Ya, Hapus' dengan URL yang sudah didapat
                 tombolHapusDiModal.setAttribute('href', urlHapus);
             });
         }

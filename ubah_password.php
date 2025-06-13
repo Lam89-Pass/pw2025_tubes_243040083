@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ubah_password'
     <div class="main-content-wrapper">
         <div class="container my-5">
             <div class="row g-4">
-                <!-- Kolom Kiri Navigasi Profil -->
+                <!-- Navigasi Profil -->
                 <div class="col-lg-4">
                     <div class="card shadow-sm profile-nav-card">
                         <div class="card-body text-center">
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ubah_password'
                     </div>
                 </div>
 
-                <!-- Kolom Kanan Form Ubah Password -->
+                <!-- Form Ubah Password -->
                 <div class="col-lg-8">
                     <div class="card shadow-sm">
                         <div class="card-header bg-light">

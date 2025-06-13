@@ -2,10 +2,8 @@
 session_start();
 require '../functions.php';
 
-// Default response
 $response = ['success' => false, 'message' => 'Terjadi kesalahan.', 'cart_count' => 0];
 
-// Cek jika user sudah login dan data POST ada
 if (isset($_SESSION['login'], $_SESSION['user_id']) && isset($_POST['id_produk'], $_POST['kuantitas'])) {
     $user_id = (int)$_SESSION['user_id'];
     $product_id = (int)$_POST['id_produk'];
@@ -23,13 +21,11 @@ if (isset($_SESSION['login'], $_SESSION['user_id']) && isset($_POST['id_produk']
         $response['message'] = 'Data produk tidak valid.';
     }
 
-    // Selalu update jumlah item di keranjang
     $response['cart_count'] = hitung_item_keranjang_db($user_id);
 } else {
     $response['message'] = 'Anda harus login untuk menambahkan produk.';
 }
 
-// Set header ke JSON dan kirim response
 header('Content-Type: application/json');
 echo json_encode($response);
 exit;

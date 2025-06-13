@@ -3,7 +3,7 @@ session_start();
 $page_title = "Manajemen Kategori";
 require_once 'partials/header_admin.php';
 
-// Untuk Tambah Kategori Baru
+// Tambah Kategori Baru
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_kategori'])) {
     $nama_kategori = $_POST['nama_kategori'] ?? '';
     $result = tambah_kategori($nama_kategori);
@@ -12,12 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_kategori'])) {
     } else {
         $_SESSION['error_message_crud'] = $result['message'];
     }
-    //untuk menghindari resubmit form saat refresh
     header("Location: kategori_data.php");
     exit;
 }
 
-// Ambil semua data kategori untuk ditampilkan di tabel
 $categories = get_all_categories();
 ?>
 

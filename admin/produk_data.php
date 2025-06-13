@@ -2,7 +2,6 @@
 session_start();
 $page_title = "Daftar Produk";
 require_once '../functions.php';
-// Staff bisa mengakses halaman ini
 protect_admin_page();
 require_once 'partials/header_admin.php';
 
@@ -59,7 +58,6 @@ if (isset($conn)) {
     }
 }
 
-//  AMBIL DATA UNTUK HALAMAN AKTIF 
 $produk_list_admin = [];
 $sql_data_admin = $base_sql_select_admin . $where_clause_admin . " ORDER BY $sort_column $sort_order LIMIT ? OFFSET ?";
 $params_data_admin = $params_admin;

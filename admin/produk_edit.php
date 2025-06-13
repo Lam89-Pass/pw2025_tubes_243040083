@@ -4,21 +4,16 @@ require_once '../functions.php';
 protect_admin_page();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ambil ID dari POST atau GET, untuk memastikan ID tidak hilang saat form disubmit
     $id_produk_update = isset($_GET['id']) ? (int)$_GET['id'] : (isset($_POST['id_produk']) ? (int)$_POST['id_produk'] : 0);
 
-    // Panggil fungsi update produk
     $result = update_produk($_POST, $_FILES, $id_produk_update);
 
     if ($result['success']) {
-        // Jika sukses, set pesan dan redirect. Ini sekarang aman dipanggil.
         $_SESSION['success_message'] = $result['message'];
         header("Location: produk_data.php");
         exit;
     } else {
-        // Jika gagal, simpan pesan error untuk ditampilkan nanti.
         $_SESSION['error_message_crud'] = $result['message'];
-        // Redirect kembali ke halaman edit yang sama untuk menampilkan error
         header("Location: produk_edit.php?id=" . $id_produk_update);
         exit;
     }
@@ -42,13 +37,10 @@ if (!$produk_lama) {
     exit;
 }
 
-// Ambil semua kategori dan merek untuk form
 $categories = get_all_categories();
 $all_merek = get_all_merek();
-// Ambil merek yang sudah terhubung dengan produk ini
 $product_current_merek = array_keys(get_merek_for_product($id_produk_edit));
 
-// Inisialisasi variabel form dengan data dari database
 $nama_produk_form = $produk_lama['name'];
 $category_id_form = $produk_lama['category_id'];
 $harga_form = $produk_lama['price'];

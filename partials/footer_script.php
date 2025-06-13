@@ -106,7 +106,6 @@
         // FUNGSI MODAL KONFIRMASI (KOSONGKAN KERANJANG)
         const konfirmasiAksiModal = document.getElementById('konfirmasiAksiModal');
         if (konfirmasiAksiModal) {
-            // Fungsi untuk menangani klik pada tombol "Ya, Lanjutkan" di dalam modal
             const handleAksiKonfirmasi = function() {
                 const formToSubmit = document.getElementById('form-kosongkan-keranjang');
                 if (formToSubmit) {
@@ -120,7 +119,6 @@
             tombolAksi.parentNode.replaceChild(newTombolAksi, tombolAksi);
             newTombolAksi.addEventListener('click', handleAksiKonfirmasi);
 
-            // Event listener saat modal akan ditampilkan
             konfirmasiAksiModal.addEventListener('show.bs.modal', event => {
                 const button = event.relatedTarget; 
                 const pesan = button.getAttribute('data-pesan-konfirmasi');
@@ -146,17 +144,13 @@
                 toggle: false
             });
 
-            // Saat pilihan bank akan ditampilkan
             collapseBank.addEventListener('show.bs.collapse', () => {
                 bsCollapseEwallet.hide();
-                // Otomatis pilih radio button pertama di dalam grup bank
                 document.querySelector('#collapseBank input[type="radio"]').checked = true;
             });
 
-            // Saat pilihan e-wallet akan ditampilkan
             collapseEwallet.addEventListener('show.bs.collapse', () => {
                 bsCollapseBank.hide();
-                // Otomatis pilih radio button pertama di dalam grup e-wallet
                 document.querySelector('#collapseEwallet input[type="radio"]').checked = true;
             });
         }
@@ -166,13 +160,11 @@
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Opsional: berhenti mengamati setelah animasi berjalan sekali
                     observer.unobserve(entry.target);
                 }
             });
         });
 
-        // Pilih semua elemen yang ingin dianimasikan
         const elementsToFadeIn = document.querySelectorAll('.fade-in-element');
         elementsToFadeIn.forEach((el) => observer.observe(el));
 
@@ -191,7 +183,6 @@
             const getBotResponse = (userInput) => {
                 userInput = userInput.toLowerCase();
 
-                // Urutan pengecekan dari yang paling spesifik
                 if (userInput.includes("termurah")) {
                     return 'Anda bisa menemukan produk termurah dengan mudah! Buka halaman <a href="allproduct.php?sort=termurah" target="_blank">Semua Produk</a> lalu urutkan berdasarkan "Harga: Termurah".';
                 } else if (userInput.includes("termahal")) {
@@ -240,7 +231,6 @@
                 }, 600);
             }
 
-            // Event Listeners
             chatbotToggler.addEventListener("click", () => chatbotWindow.classList.toggle("show"));
             closeBtn.addEventListener("click", () => chatbotWindow.classList.remove("show"));
             sendChatBtn.addEventListener("click", handleChat);

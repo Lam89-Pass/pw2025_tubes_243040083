@@ -13,7 +13,6 @@ $filter_status = isset($_GET['status']) ? $_GET['status'] : '';
 $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
 $sort_option = isset($_GET['sort_option']) ? $_GET['sort_option'] : 'id_asc'; 
 
-// --- PERBAIKAN: LOGIKA UNTUK FILTER URUTKAN ---
 $sort_column = 'id_pesanan';
 $sort_order = 'ASC';
 
@@ -167,7 +166,6 @@ if ($stmt_data) {
             <nav class="d-flex justify-content-center">
                 <ul class="pagination mb-0">
                     <?php
-                    // Logika pagination tidak perlu diubah, hanya pastikan parameter sort_option ikut terbawa
                     $base_url = "pesanan_data.php?";
                     $query_params = [];
                     if (!empty($search_query)) $query_params['search'] = $search_query;

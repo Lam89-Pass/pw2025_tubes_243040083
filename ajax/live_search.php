@@ -15,7 +15,6 @@ if (isset($_GET['q'])) {
                 ORDER BY p.name ASC 
                 LIMIT 5"; 
 
-        // Siapkan dan eksekusi statement
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ss", $search_param, $search_param);
@@ -28,7 +27,7 @@ if (isset($_GET['q'])) {
         }
     }
 
-    // Tampilkan hasil pencarian
+    // Hasil pencarian
     if (!empty($results)) {
         foreach ($results as $product) {
             echo '<a href="detail_produk.php?id=' . htmlspecialchars($product['id']) . '" class="list-group-item list-group-item-action d-flex align-items-center">';
@@ -41,7 +40,6 @@ if (isset($_GET['q'])) {
             echo '</a>';
         }
     } elseif (!empty($search_query)) {
-        // Jika tidak ada hasil
         echo '<div class="list-group-item text-muted text-center">Tidak ada hasil yang cocok ditemukan.</div>';
     }
 }

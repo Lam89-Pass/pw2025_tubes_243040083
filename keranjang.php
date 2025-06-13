@@ -10,7 +10,6 @@ if (!isset($_SESSION["login"]) || !isset($_SESSION['user_id'])) {
 $user_id = (int)$_SESSION['user_id'];
 $page_title = "Keranjang Belanja Saya";
 
-// untuk update kuantitas atau hapus item dari keranjang
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['update_kuantitas_item'])) {
         $id_produk_update = (int)$_POST['id_produk_update'];
@@ -34,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// Ambil item keranjang dari DATABASE
 $keranjang_items = ambil_keranjang_dari_db($user_id);
 $total_belanja = 0;
 $jumlah_item_keranjang = !empty($keranjang_items) ? count($keranjang_items) : 0;

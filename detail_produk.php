@@ -2,7 +2,6 @@
 session_start();
 require 'functions.php';
 
-// Ambil ID produk dari URL
 $id_produk_lihat = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $produk_detail = null;
 $page_title = "Detail Produk";
@@ -18,7 +17,6 @@ if ($id_produk_lihat > 0) {
     }
 }
 
-//  untuk menangani form Tambah ke Keranjang
 $pesan_flash = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_ke_keranjang'])) {
     if (!isset($_SESSION['login'], $_SESSION['user_id'])) {
@@ -37,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah_ke_keranjang']
     }
 }
 
-// untuk menangani pengiriman komentar baru
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_komentar'])) {
     if (isset($_SESSION['login'], $_SESSION['user_id'])) {
         $user_id_komentar = $_SESSION['user_id'];
@@ -49,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_komentar'])) {
     }
 }
 
-// Ambil pesan flash dari sesi (jika ada) dan hapus setelahnya
 if (isset($_SESSION['pesan_flash'])) {
     $pesan_flash_data = $_SESSION['pesan_flash'];
     unset($_SESSION['pesan_flash']);
@@ -94,12 +90,12 @@ if (isset($_SESSION['pesan_flash'])) {
 
                 <div class="bg-white p-4 rounded shadow-sm">
                     <div class="row g-5">
-                        <!-- Kolom Kiri Gambar Produk -->
+                        <!-- Gambar Produk -->
                         <div class="col-lg-4">
                             <img src="img/img_produk/<?= htmlspecialchars($produk_detail['image'] ?: 'placeholder.png'); ?>" class="img-fluid main-product-image" id="mainImage" alt="<?= htmlspecialchars($produk_detail['name']); ?>">
                         </div>
 
-                        <!-- Kolom Tengah Info Produk & Ulasan -->
+                        <!-- Info Produk & Ulasan -->
                         <div class="col-lg-5">
                             <h1 class="product-title-detail mb-2"><?= htmlspecialchars($produk_detail['name']); ?></h1>
                             <p class="mb-3 text-muted">Kategori: <a href="allproduct.php?kategori=<?= urlencode($produk_detail['nama_kategori']); ?>"><?= htmlspecialchars($produk_detail['nama_kategori']); ?></a></p>
@@ -139,7 +135,7 @@ if (isset($_SESSION['pesan_flash'])) {
                             </div>
                         </div>
 
-                        <!-- Kolom Kanan Aksi Pembelian -->
+                        <!-- Aksi Pembelian -->
                         <div class="col-lg-3">
                             <div class="card action-card">
                                 <div class="card-body">

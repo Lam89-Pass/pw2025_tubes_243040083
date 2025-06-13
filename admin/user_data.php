@@ -2,11 +2,9 @@
 session_start();
 $page_title = "Manajemen Pengguna";
 require_once '../functions.php';
-// Agar hanya admin yang bisa mengakses halaman ini
 protect_super_admin_page();
 require_once 'partials/header_admin.php';
 
-// untuk mengubah peran pengguna
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_role'])) {
     $user_id_to_update = isset($_POST['user_id']) ? (int)$_POST['user_id'] : 0;
     $new_role = $_POST['new_role'] ?? '';
@@ -47,7 +45,6 @@ if (!empty($search_keyword_user)) {
 }
 $where_clause_users = !empty($where_conditions_users) ? " WHERE " . implode(" AND ", $where_conditions_users) : "";
 
-// Hitung total pengguna untuk pagination
 $total_users = 0;
 $jumlah_halaman = 0;
 if (isset($conn)) {
@@ -62,7 +59,6 @@ if (isset($conn)) {
     }
 }
 
-// Ambil data pengguna untuk halaman ini
 $users_list = [];
 $sql_data_users = "SELECT id, username, email, role, created_at, nama_lengkap FROM users" . $where_clause_users . " ORDER BY created_at DESC LIMIT ? OFFSET ?";
 $params_data_users = $params_users;

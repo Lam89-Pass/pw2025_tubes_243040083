@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm sticky-top">
     <div class="container-fluid px-md-4">
         <a class="navbar-brand p-0 me-lg-3" href="dashboard.php" aria-label="Bengkelin Aja Home">
-            <img src="img/logoasli.png" alt="BengkelinAja Logo" style="max-height: 50px; width: auto;">
+            <img src="img/logoasli.png" alt="SeikoMotor Logo" style="max-height: 50px; width: auto;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUserContent" aria-controls="navbarUserContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

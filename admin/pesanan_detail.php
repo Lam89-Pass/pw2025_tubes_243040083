@@ -4,7 +4,6 @@ $page_title = "Detail Pesanan";
 require_once '../functions.php';
 protect_admin_page();
 
-// Ambil ID pesanan dari URL
 $id_pesanan = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($id_pesanan <= 0) {
     $_SESSION['error_message_crud'] = "ID Pesanan tidak valid.";
@@ -12,7 +11,6 @@ if ($id_pesanan <= 0) {
     exit;
 }
 
-// Proses update status jika ada form yang disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $status_baru = $_POST['status_pesanan'];
     if (update_status_pesanan($id_pesanan, $status_baru)) {
@@ -24,11 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     exit;
 }
 
-// Ambil data pesanan dan detail itemnya dari database
 $pesanan = get_pesanan_by_id($id_pesanan);
 $detail_items = get_detail_pesanan_items($id_pesanan);
 
-// Jika pesanan tidak ditemukan, kembali ke halaman daftar pesanan
 if (!$pesanan) {
     $_SESSION['error_message_crud'] = "Pesanan dengan ID No. " . $id_pesanan . " tidak ditemukan.";
     header("Location: pesanan_data.php");

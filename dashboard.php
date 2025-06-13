@@ -6,7 +6,6 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 
-// Ambil 6 produk terbaru untuk ditampilkan di beranda
 $produk_beranda = query("SELECT * FROM product ORDER BY created_at DESC LIMIT 6");
 if ($produk_beranda === false) {
     error_log("Gagal mengambil data produk untuk beranda dari database.");

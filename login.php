@@ -42,7 +42,6 @@ if (isset($_POST["login"])) {
                     exit;
                 }
             }
-            // Jika username atau password salah, pesan error akan disiapkan
             $error_message = "Username atau password salah!";
         }
     } else {
@@ -107,7 +106,6 @@ if (isset($_POST["login"])) {
 
         if (loginForm) {
             loginForm.addEventListener('submit', function(e) {
-                // Tampilkan overlay loading setiap kali tombol submit ditekan
                 loadingOverlay.style.display = 'flex';
             });
         }

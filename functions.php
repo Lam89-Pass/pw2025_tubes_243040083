@@ -1,5 +1,4 @@
 <?php
-// KONEKSI DATABASE
 if (!isset($conn) || !$conn) {
     $host = 'localhost';
     $user = 'root';
@@ -9,12 +8,11 @@ if (!isset($conn) || !$conn) {
 
     if (!$conn) {
         error_log("Koneksi database GAGAL di functions.php: " . mysqli_connect_error());
-        // Hentikan eksekusi jika koneksi gagal.
         die("Koneksi database gagal. Silakan periksa konfigurasi dan pastikan server database berjalan.");
     }
 }
 
-// FUNGSI DASAR UTILITY
+// Query
 function query($query_string)
 {
     global $conn;
@@ -23,7 +21,6 @@ function query($query_string)
     }
     $result = mysqli_query($conn, $query_string);
 
-    // Periksa jika query gagal total
     if ($result === false) {
         error_log("Query Error: " . mysqli_error($conn) . " | Query: " . $query_string);
         return false;
@@ -42,28 +39,22 @@ function query($query_string)
 function registrasi($data)
 {
     global $conn;
-    // Ambil input mentah untuk divalidasi
     $username_input = stripslashes($data["username"]);
 
     $email = strtolower(stripslashes($data["email"]));
     $password = $data["password"];
     $confirmPassword = $data["confirmPassword"];
 
-    // Validasi dasar
     if (empty($username_input) || empty($email) || empty($password)) {
         return ['success' => false, 'message' => 'Semua kolom wajib diisi.'];
     }
-
-    // Validasi username baru pada input asli 
     if (preg_match('/\s/', $username_input)) {
         return ['success' => false, 'message' => 'Username tidak boleh mengandung spasi.'];
     }
-    // Regex ini akan gagal jika ada karakter selain huruf kecil [a-z] dan angka [0-9]
     if (!preg_match('/^[a-z0-9]+$/', $username_input)) {
         return ['success' => false, 'message' => 'Username hanya boleh berisi huruf kecil dan angka.'];
     }
 
-    // Setelah validasi lolos, kita bisa menggunakan username tersebut
     $username = $username_input;
 
     // Cek username sudah ada atau belum
@@ -82,7 +73,6 @@ function registrasi($data)
     }
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Query INSERT menggunakan username yang sudah divalidasi
     $stmt_insert = mysqli_prepare($conn, "INSERT INTO users (username, email, password, created_at) VALUES (?, ?, ?, NOW())");
     mysqli_stmt_bind_param($stmt_insert, "sss", $username, $email, $hashed_password);
     if (mysqli_stmt_execute($stmt_insert)) {
@@ -98,7 +88,6 @@ function is_admin()
 
 function protect_admin_page()
 {
-    // Cek jika sesi login tidak ada atau peran bukan admin dan bukan staff
     if (!isset($_SESSION['login']) || !in_array($_SESSION['user_role'], ['admin', 'staff'])) {
         $_SESSION['error_message'] = "Anda tidak memiliki hak akses ke halaman ini.";
         $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
@@ -113,11 +102,9 @@ function can_access_panel()
     return (isset($_SESSION['login']) && isset($_SESSION['user_role']) && in_array($_SESSION['user_role'], ['admin', 'staff']));
 }
 
-// melindungi halaman hanya untuk admin
 function protect_super_admin_page()
 {
     if (!is_admin()) {
-        // Jika bukan admin, tendang ke dashboard admin (halaman yang boleh diakses staff)
         header("Location: index.php");
         exit;
     }
@@ -239,6 +226,8 @@ function update_produk($data, $file, $id_produk)
     return ['success' => false, 'message' => 'Tidak ada perubahan data.'];
 }
 
+
+// Hapus Produk
 function hapus_produk($id_produk)
 {
     global $conn;
@@ -260,6 +249,8 @@ function get_all_categories()
 {
     return query("SELECT * FROM categories ORDER BY nama_kategori ASC");
 }
+
+// Tambah Kategori
 function tambah_kategori($nama_kategori)
 {
     global $conn;
@@ -282,6 +273,8 @@ function get_kategori_by_id($id_kategori)
     mysqli_stmt_execute($stmt);
     return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 }
+
+// Update Kategori
 function update_kategori($id_kategori, $nama_kategori_baru)
 {
     global $conn;
@@ -292,6 +285,8 @@ function update_kategori($id_kategori, $nama_kategori_baru)
     if (mysqli_stmt_execute($stmt_update) && mysqli_stmt_affected_rows($stmt_update) > 0) return ['success' => true, 'message' => 'Kategori berhasil diperbarui!'];
     return ['success' => false, 'message' => 'Tidak ada perubahan data.'];
 }
+
+// Hapus Kategori
 function hapus_kategori($id_kategori)
 {
     global $conn;
@@ -300,6 +295,7 @@ function hapus_kategori($id_kategori)
     if (mysqli_stmt_execute($stmt_delete) && mysqli_stmt_affected_rows($stmt_delete) > 0) return ['success' => true, 'message' => 'Kategori berhasil dihapus!'];
     return ['success' => false, 'message' => 'Gagal menghapus kategori (mungkin masih terkait produk).'];
 }
+
 function get_all_merek()
 {
     return query("SELECT * FROM merek ORDER BY nama_merek ASC");
@@ -317,6 +313,8 @@ function get_merek_for_product($product_id)
     mysqli_stmt_close($stmt);
     return $merek_list;
 }
+
+// Update Merek
 function update_produk_merek($product_id, $merek_ids = [])
 {
     global $conn;
@@ -357,17 +355,16 @@ function get_user_by_id($id_user)
     return mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 }
 
+// Update Peran Pengguna Role
 function update_user_role($id_user, $new_role)
 {
     global $conn;
     $id_user = (int)$id_user;
-    // Tambahkan 'staff' ke dalam daftar peran yang diizinkan
     $allowed_roles = ['user', 'staff', 'admin'];
     if (!in_array($new_role, $allowed_roles)) {
         return ['success' => false, 'message' => 'Peran tidak valid.'];
     }
 
-    // Logika untuk mencegah admin terakhir diubah perannya tetap sama
     if ($new_role !== 'admin') {
         $user_to_change = get_user_by_id($id_user);
         if ($user_to_change && $user_to_change['role'] === 'admin') {
@@ -385,6 +382,8 @@ function update_user_role($id_user, $new_role)
     }
     return ['success' => false, 'message' => 'Tidak ada perubahan atau terjadi kesalahan.'];
 }
+
+// Hapus Pengguna
 function hapus_pengguna($id_user_to_delete, $current_admin_id)
 {
     global $conn;
@@ -404,6 +403,8 @@ function hapus_pengguna($id_user_to_delete, $current_admin_id)
     }
     return ['success' => false, 'message' => 'Gagal menghapus pengguna.'];
 }
+
+// Update Profil Pengguna
 function update_user_profile($user_id, $data, $file)
 {
     global $conn;
@@ -437,6 +438,8 @@ function update_user_profile($user_id, $data, $file)
     }
     return ['success' => false, 'message' => 'Gagal memperbarui profil di database.'];
 }
+
+// Ubah Password Pengguna
 function ubah_password_user($user_id, $password_saat_ini, $password_baru, $konfirmasi_password_baru)
 {
     global $conn;
@@ -454,6 +457,7 @@ function ubah_password_user($user_id, $password_saat_ini, $password_baru, $konfi
 }
 
 // FUNGSI MANAJEMEN KOMENTAR
+// Ambil komentar untuk produk tertentu
 function get_komentar_for_produk($product_id)
 {
     global $conn;
@@ -467,6 +471,8 @@ function get_komentar_for_produk($product_id)
     mysqli_stmt_close($stmt);
     return $komentar_list;
 }
+
+// Tambah komentar untuk produk
 function tambah_komentar($product_id, $user_id, $komentar)
 {
     global $conn;
@@ -477,6 +483,8 @@ function tambah_komentar($product_id, $user_id, $komentar)
     if (mysqli_stmt_execute($stmt)) return ['success' => true, 'message' => 'Komentar berhasil ditambahkan.'];
     return ['success' => false, 'message' => 'Gagal menambahkan komentar.'];
 }
+
+// Hapus komentar oleh admin
 function hapus_komentar_admin($id_komentar)
 {
     global $conn;
@@ -487,6 +495,7 @@ function hapus_komentar_admin($id_komentar)
 }
 
 // FUNGSI MANAJEMEN KERANJANG BELANJA (DATABASE)
+// Tambah produk ke keranjang
 function tambah_ke_keranjang_db($user_id, $product_id, $kuantitas)
 {
     global $conn;
@@ -513,6 +522,8 @@ function tambah_ke_keranjang_db($user_id, $product_id, $kuantitas)
         return ['success' => $success, 'message' => $success ? 'Produk ditambahkan.' : 'Gagal.'];
     }
 }
+
+// Update kuantitas produk di keranjang
 function update_kuantitas_db($user_id, $product_id, $kuantitas_baru)
 {
     global $conn;
@@ -529,6 +540,8 @@ function update_kuantitas_db($user_id, $product_id, $kuantitas_baru)
     mysqli_stmt_bind_param($stmt, "iii", $kuantitas_baru, $user_id, $product_id);
     return mysqli_stmt_execute($stmt);
 }
+
+//
 function ambil_keranjang_dari_db($user_id)
 {
     global $conn;

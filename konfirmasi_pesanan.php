@@ -2,7 +2,6 @@
 session_start();
 require 'functions.php';
 
-// Pastikan pengguna sudah login dan ada ID pesanan yang valid
 if (!isset($_SESSION["login"], $_SESSION['user_id'], $_GET['order_id'])) {
     header("Location: dashboard.php");
     exit;
@@ -51,7 +50,6 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                             $metode_pembayaran = $pesanan['metode_pembayaran'];
 
                             if (str_starts_with($metode_pembayaran, 'Transfer Bank')) :
-                                // Mengambil nama bank dari string, contoh: "Transfer Bank BCA" -> "BCA"
                                 $nama_bank = trim(str_replace('Transfer Bank', '', $metode_pembayaran));
                             ?>
                                 <div class="alert alert-success mt-4 text-start">
@@ -63,7 +61,6 @@ if (!$pesanan || $pesanan['user_id'] != $user_id) {
                                 </div>
 
                             <?php elseif (str_starts_with($metode_pembayaran, 'E-Wallet')) :
-                                // Mengambil nama e-wallet dari string
                                 $nama_ewallet = trim(str_replace('E-Wallet', '', $metode_pembayaran));
                             ?>
                                 <div class="alert alert-info mt-4 text-start">
