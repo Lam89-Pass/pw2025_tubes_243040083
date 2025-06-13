@@ -245,6 +245,7 @@ function hapus_produk($id_produk)
     $produk = get_produk_by_id($id_produk);
     if (!$produk) return ['success' => false, 'message' => 'Produk tidak ditemukan.'];
     $gambar_produk = $produk['image'];
+    
     $stmt = mysqli_prepare($conn, "DELETE FROM product WHERE id = ?");
     mysqli_stmt_bind_param($stmt, "i", $id_produk);
     if (mysqli_stmt_execute($stmt) && mysqli_stmt_affected_rows($stmt) > 0) {

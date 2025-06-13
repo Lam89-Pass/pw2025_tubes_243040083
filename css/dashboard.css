@@ -147,7 +147,7 @@ body {
 
 /* HALAMAN BERANDA & SEMUA PRODUK */
 .hero-section {
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5)), url("../img/bg-loginadmin.png") center center/cover no-repeat;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5)), url("../img/bg-banner.png") center center/cover no-repeat;
   padding: 6rem 0;
   color: #fff;
 }
