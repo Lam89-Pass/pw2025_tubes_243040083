@@ -47,10 +47,10 @@
                 <h6 class="text-uppercase fw-bold mb-4">
                     Produk
                 </h6>
-                <p><a href="allproduct.php?kategori=Aksesoris" class="text-white-50 text-decoration-none">Aksesoris</a></p>
-                <p><a href="allproduct.php?kategori=Oli" class="text-white-50 text-decoration-none">Oli</a></p>
-                <p><a href="allproduct.php?kategori=Helm" class="text-white-50 text-decoration-none">Helm</a></p>
-                <p><a href="allproduct.php?kategori=Suku Cadang" class="text-white-50 text-decoration-none">Suku Cadang</a></p>
+                <p><a href="index.php?kategori=Aksesoris" class="text-white-50 text-decoration-none">Aksesoris</a></p>
+                <p><a href="index.php?kategori=Oli" class="text-white-50 text-decoration-none">Oli</a></p>
+                <p><a href="index.php?kategori=Helm" class="text-white-50 text-decoration-none">Helm</a></p>
+                <p><a href="index.php?kategori=Suku Cadang" class="text-white-50 text-decoration-none">Suku Cadang</a></p>
             </div>
 
             <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-md-0 mb-4">

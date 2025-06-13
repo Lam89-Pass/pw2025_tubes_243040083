@@ -63,7 +63,7 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? count($keranjang_items) : 0;
 
         <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
             <h2 class="fw-bolder text-success mb-0"><i class="bi bi-cart-check-fill me-2"></i><?= htmlspecialchars($page_title); ?></h2>
-            <a href="allproduct.php" class="btn btn-outline-secondary">
+            <a href="index.php" class="btn btn-outline-secondary">
                 <i class="bi bi-arrow-left"></i> Kembali Belanja
             </a>
         </div>
@@ -173,7 +173,7 @@ $jumlah_item_keranjang = !empty($keranjang_items) ? count($keranjang_items) : 0;
                 <i class="bi bi-cart-check fs-1 mb-3 d-block"></i>
                 <h4 class="alert-heading">Keranjang Belanja Anda Kosong</h4>
                 <p>Yuk, mulai belanja dan temukan produk favorit Anda!</p>
-                <a href="allproduct.php" class="btn btn-success mt-3"><i class="bi bi-shop me-2"></i>Mulai Belanja</a>
+                <a href="index.php" class="btn btn-success mt-3"><i class="bi bi-shop me-2"></i>Mulai Belanja</a>
             </div>
         <?php endif; ?>
     </div>

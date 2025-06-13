@@ -126,11 +126,11 @@ if (isset($conn) && $conn && $total_produk > 0) {
         <div class="container">
             <ul class="nav nav-link-categories justify-content-center flex-wrap">
                 <li class="nav-item"><a class="nav-link" href="dashboard.php">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link <?php echo (empty($kategori_nama_filter) && empty($keyword_pencarian)) ? 'active' : ''; ?>" href="allproduct.php">Semua Produk</a></li>
-                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Aksesoris') ? 'active' : ''; ?>" href="allproduct.php?kategori=Aksesoris">Aksesoris</a></li>
-                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Oli') ? 'active' : ''; ?>" href="allproduct.php?kategori=Oli">Oli</a></li>
-                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Helm') ? 'active' : ''; ?>" href="allproduct.php?kategori=Helm">Helm</a></li>
-                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Suku Cadang') ? 'active' : ''; ?>" href="allproduct.php?kategori=Suku Cadang">Suku Cadang</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo (empty($kategori_nama_filter) && empty($keyword_pencarian)) ? 'active' : ''; ?>" href="index.php">Semua Produk</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Aksesoris') ? 'active' : ''; ?>" href="index.php?kategori=Aksesoris">Aksesoris</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Oli') ? 'active' : ''; ?>" href="index.php?kategori=Oli">Oli</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Helm') ? 'active' : ''; ?>" href="index.php?kategori=Helm">Helm</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo ($kategori_nama_filter == 'Suku Cadang') ? 'active' : ''; ?>" href="index.php?kategori=Suku Cadang">Suku Cadang</a></li>
             </ul>
         </div>
     </div>
@@ -141,7 +141,7 @@ if (isset($conn) && $conn && $total_produk > 0) {
         <div class="produk-section p-4 shadow-sm bg-white rounded">
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
                 <p class="text-muted mb-0 fs-5"><?= htmlspecialchars($judul_halaman); ?></p>
-                <form method="GET" action="allproduct.php" class="d-flex align-items-center">
+                <form method="GET" action="index.php" class="d-flex align-items-center">
                     <?php if (!empty($kategori_nama_filter)): ?><input type="hidden" name="kategori" value="<?= htmlspecialchars($kategori_nama_filter); ?>"><?php endif; ?>
                     <?php if (!empty($keyword_pencarian)): ?><input type="hidden" name="search" value="<?= htmlspecialchars($keyword_pencarian); ?>"><?php endif; ?>
                     <label for="sort" class="form-label me-2 mb-0 fw-medium text-muted">Urutkan:</label>
@@ -193,7 +193,7 @@ if (isset($conn) && $conn && $total_produk > 0) {
                 <nav class="mt-4 d-flex justify-content-center">
                     <ul class="pagination">
                         <?php
-                        $base_url = "allproduct.php?";
+                        $base_url = "index.php?";
                         $query_params = [];
                         if (!empty($kategori_nama_filter)) $query_params['kategori'] = $kategori_nama_filter;
                         if (!empty($keyword_pencarian)) $query_params['search'] = $keyword_pencarian;

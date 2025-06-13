@@ -184,9 +184,9 @@
                 userInput = userInput.toLowerCase();
 
                 if (userInput.includes("termurah")) {
-                    return 'Anda bisa menemukan produk termurah dengan mudah! Buka halaman <a href="allproduct.php?sort=termurah" target="_blank">Semua Produk</a> lalu urutkan berdasarkan "Harga: Termurah".';
+                    return 'Anda bisa menemukan produk termurah dengan mudah! Buka halaman <a href="index.php?sort=termurah" target="_blank">Semua Produk</a> lalu urutkan berdasarkan "Harga: Termurah".';
                 } else if (userInput.includes("termahal")) {
-                    return 'Untuk melihat produk termahal, silakan kunjungi halaman <a href="allproduct.php?sort=termahal" target="_blank">Semua Produk</a> dan urutkan berdasarkan "Harga: Termahal".';
+                    return 'Untuk melihat produk termahal, silakan kunjungi halaman <a href="index.php?sort=termahal" target="_blank">Semua Produk</a> dan urutkan berdasarkan "Harga: Termahal".';
                 } else if (userInput.includes("pesan") || userInput.includes("lacak") || userInput.includes("order")) {
                     return 'Anda bisa melacak pesanan Anda di halaman <a href="pesanan_saya.php" target="_blank">Riwayat Pesanan</a>.';
                 } else if (userInput.includes("bayar") || userInput.includes("pembayaran") || userInput.includes("transfer")) {
@@ -200,7 +200,7 @@
                 } else if (userInput.includes("halo") || userInput.includes("hai") || userInput.includes("hi")) {
                     return 'Halo juga! Ada yang bisa dibantu?';
                 } else if (userInput.includes("produk") || userInput.includes("barang")) {
-                    return 'Anda bisa melihat semua produk kami di halaman <a href="allproduct.php" target="_blank">Semua Produk</a>.';
+                    return 'Anda bisa melihat semua produk kami di halaman <a href="index.php" target="_blank">Semua Produk</a>.';
                 } else {
                     return 'Maaf, saya tidak mengerti pertanyaan Anda. Anda bisa coba tanyakan tentang "lacak pesanan", "pembayaran", atau "lokasi toko".';
                 }

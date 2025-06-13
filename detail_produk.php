@@ -80,8 +80,8 @@ if (isset($_SESSION['pesan_flash'])) {
                 <nav aria-label="breadcrumb" class="mb-4">
                     <ol class="breadcrumb bg-light p-3 rounded-pill">
                         <li class="breadcrumb-item"><a href="dashboard.php">Beranda</a></li>
-                        <li class="breadcrumb-item"><a href="allproduct.php">Semua Produk</a></li>
-                        <li class="breadcrumb-item"><a href="allproduct.php?kategori=<?= urlencode($produk_detail['nama_kategori'] ?? ''); ?>"><?= htmlspecialchars($produk_detail['nama_kategori'] ?? 'Kategori'); ?></a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Semua Produk</a></li>
+                        <li class="breadcrumb-item"><a href="index.php?kategori=<?= urlencode($produk_detail['nama_kategori'] ?? ''); ?>"><?= htmlspecialchars($produk_detail['nama_kategori'] ?? 'Kategori'); ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?= substr(htmlspecialchars($produk_detail['name']), 0, 50) . '...'; ?></li>
                     </ol>
                 </nav>
@@ -104,7 +104,7 @@ if (isset($_SESSION['pesan_flash'])) {
                         <!-- Info Produk & Ulasan -->
                         <div class="col-lg-5">
                             <h1 class="product-title-detail mb-2"><?= htmlspecialchars($produk_detail['name']); ?></h1>
-                            <p class="mb-3 text-muted">Kategori: <a href="allproduct.php?kategori=<?= urlencode($produk_detail['nama_kategori']); ?>"><?= htmlspecialchars($produk_detail['nama_kategori']); ?></a></p>
+                            <p class="mb-3 text-muted">Kategori: <a href="index.php?kategori=<?= urlencode($produk_detail['nama_kategori']); ?>"><?= htmlspecialchars($produk_detail['nama_kategori']); ?></a></p>
                             <div class="price-display mb-4">Rp <?= number_format($produk_detail['price'], 0, ',', '.'); ?></div>
 
                             <ul class="nav nav-tabs" id="productTab" role="tablist">
@@ -166,7 +166,7 @@ if (isset($_SESSION['pesan_flash'])) {
             <?php else : ?>
                 <div class="alert alert-danger text-center py-5">
                     <h4 class="alert-heading">Produk Tidak Ditemukan</h4>
-                    <p>Maaf, produk yang Anda cari tidak dapat ditemukan.</p><a href="allproduct.php" class="btn btn-primary mt-3">Kembali ke Semua Produk</a>
+                    <p>Maaf, produk yang Anda cari tidak dapat ditemukan.</p><a href="index.php" class="btn btn-primary mt-3">Kembali ke Semua Produk</a>
                 </div>
             <?php endif; ?>
         </div>

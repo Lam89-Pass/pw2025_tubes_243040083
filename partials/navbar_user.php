@@ -10,7 +10,7 @@
 
             <div class="mx-auto my-2 my-lg-0" style="width: 100%; max-width: 550px;">
                 <div class="search-container">
-                    <form class="d-flex" role="search" action="allproduct.php" method="GET" autocomplete="off">
+                    <form class="d-flex" role="search" action="index.php" method="GET" autocomplete="off">
                         <div class="input-group search-input-group w-100">
                             <span class="input-group-text ps-3">
                                 <i class="bi bi-search text-muted"></i>

@@ -42,19 +42,19 @@ if ($produk_beranda === false) {
                         <a class="nav-link active" aria-current="page" href="dashboard.php">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.php">Semua Produk</a>
+                        <a class="nav-link" href="index.php">Semua Produk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.php?kategori=Aksesoris">Aksesoris</a>
+                        <a class="nav-link" href="index.php?kategori=Aksesoris">Aksesoris</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.php?kategori=Oli">Oli</a>
+                        <a class="nav-link" href="index.php?kategori=Oli">Oli</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.php?kategori=Helm">Helm</a>
+                        <a class="nav-link" href="index.php?kategori=Helm">Helm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="allproduct.php?kategori=Suku Cadang">Suku Cadang</a>
+                        <a class="nav-link" href="index.php?kategori=Suku Cadang">Suku Cadang</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@ if ($produk_beranda === false) {
             <div class="container text-center">
                 <h1 class="display-4">Semua Sparepart Motor Anda, Ada Di Sini.</h1>
                 <p class="lead">Temukan ribuan suku cadang motor original dan aftermarket berkualitas tinggi dengan harga terbaik. Jaminan keaslian dan pengiriman cepat ke seluruh Indonesia.</p>
-                <a href="allproduct.php" class="btn btn-light btn-lg">
+                <a href="index.php" class="btn btn-light btn-lg">
                     <i class="bi bi-search me-2"></i>Mulai Cari Produk
                 </a>
             </div>
@@ -144,7 +144,7 @@ if ($produk_beranda === false) {
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="allproduct.php" class="btn btn-outline-success rounded-pill px-4 py-2">
+                    <a href="index.php" class="btn btn-outline-success rounded-pill px-4 py-2">
                         Lihat Semua Produk <i class="bi bi-arrow-right ms-1"></i>
                     </a>
                 </div>
@@ -162,7 +162,7 @@ if ($produk_beranda === false) {
                             <p>Jl. Ciwaruga No. 26, Parongpong, Kab. Bandung Barat, Jawa Barat</p>
                         </div>
                         <div class="d-flex gap-2">
-                            <a href="https://www.instagram.com/store_bengkelinaja" target="_blank" class="btn btn-dark"><i class="bi bi-instagram me-2"></i>Instagram</a>
+                            <a href="https://www.instagram.com/seiko.motor" target="_blank" class="btn btn-dark"><i class="bi bi-instagram me-2"></i>Instagram</a>
                             <a href="https://wa.me/6285221560909" target="_blank" class="btn btn-success"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>
                         </div>
                     </div>
